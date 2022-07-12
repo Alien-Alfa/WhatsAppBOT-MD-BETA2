@@ -29,7 +29,7 @@
 },
  "ZENS_API": {
   "description": "Get an API key From https://zenzapi.xyz To Use The API Functions.",
-  "required": "false"
+  "required": false,
 },
 "WORKTYPE": {
   "description": "change the Work Type (public or private)",
