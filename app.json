@@ -1,5 +1,5 @@
 {
-	"name": "WhatsAppBot MD BETA II",
+"name": "WhatsAppBot MD BETA II",
 	"description": "Fully Costamisable Bot by, Alien-Alfa.",
 	"repository": "https://github.com/Alien-Alfa/WhatsAppBot-MD-BETA2",
 	"website": "https://small-sharp-tool.com/",
@@ -29,7 +29,7 @@
 },
  "ZENS_API": {
   "description": "Get an API key From https://zenzapi.xyz To Use The API Functions.",
-  "required": false
+  "required": "false"
 },
 "WORKTYPE": {
   "description": "change the Work Type (public or private)",
@@ -49,22 +49,22 @@
 "AUTO_TYPING": {
   "description": "Automatic Typing... Status (true or false)",
   "required": false,
-  "value": false
+  "value": "false"
 },
 "AUTO_READ_PM": {
   "description": "Auto Read Messages (In PM chat)",
   "required": false,
-  "value": false
+  "value": "false"
 },
 "AUTO_READ_GROUP": {
   "description": "Auto Read Messages (In group chat)",
   "required": false,
-  "value": false
+  "value": "false"
 },
 "AUTO_RECORD": {
   "description": "Automatic Recording... Status (true or false)",
   "required": false,
-  "value": false
+  "value": "false"
 },
 "VIDEO_MENU_URL": {
   "description": "video URL for Video Menu Template(example: https://imgur.com/aexwlcx ) ",
@@ -74,7 +74,7 @@
 "ALWAYS_ONLINE": {
   "description": "As the name says always online (true or False)",
   "required": false,
-  "value": true
+  "value": "true"
 },
 "OWNER_VIEW_NUMBER": {
   "description": "owner number to be sent in .owner command(example: 447405935355)",
@@ -153,16 +153,16 @@
 },
 "HEROKU_APP_NAME": {
   "description": "Heroku App name to manage the worker (you canot use restart if u dont fill thsi and HEROKU_API)",
-  "required": true
+  "required": "true"
 },
 "HEROKU_API_KEY": {
   "description": "Heroku API key for manage the worker (You canot use restart if u dont fill thsi and APP_NAME)",
-  "required": true
+  "required": "true"
 },
 "MENU_BUTTON": {
   "description": "Here is an editable template for you ONLY EDIT THE VALUES OF 'displayText','url','id' THIS IS USED IN THE .menu COMMAND SO EDIT IT WELL",
   "required": false,
-  "value": "[{ urlButton: { displayText: linkbuttid1, url: butturl1 } },			{ urlButton: { displayText: linkbuttid2, url: butturl2 } },			{ quickReplyButton: { displayText: `All Menu `, id: 'allmenu'} },			{ quickReplyButton: { displayText: `List Menu `, id: 'command'} },			{ quickReplyButton: { displayText: `Ping `, id: 'ping'} }]"
+  "value": "[{ urlButton: { displayText: linkbuttid1, url: butturl1 } },                    { urlButton: { displayText: linkbuttid2, url: butturl2 } },                    { quickReplyButton: { displayText: `All Menu `, id: 'allmenu'} },                    { quickReplyButton: { displayText: `List Menu `, id: 'command'} },                    { quickReplyButton: { displayText: `Ping `, id: 'ping'} }]"
 },
 "AUTO_DOWNLOADER": {
   "description": "auto downloader YT and IG (BETA!) (example: active)",
