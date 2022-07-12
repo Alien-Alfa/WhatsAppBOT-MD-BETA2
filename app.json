@@ -4,8 +4,9 @@
     "repository": "https://github.com/Alien-Alfa/WhatsAppBot-MD-BETA2",
     "website": "https://small-sharp-tool.com/",
     "logo": "https://avatars.githubusercontent.com/u/64305844?v=4",
-    "keywords": ["multi-device","ＡＬＩＥＮ ＡＬＦＡ","BETA 2"],
+    "keywords": ["multi-device", "ＡＬＩＥＮ ＡＬＦＡ", "BETA 2"],
     "success_url": "under maintenance",
+    "stack": "container",
     "env": { 
   "OWNER": {
     "description": "Pleas enter Number Of the Owner.",
