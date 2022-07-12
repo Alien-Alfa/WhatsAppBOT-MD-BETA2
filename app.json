@@ -1,7 +1,7 @@
 {
 	"name": "WhatsAppBot MD BETA II",
 	"description": "Fully Costamisable Bot by, Alien-Alfa.",
-	"repository": "https://github.com/Alien-Alfa/WhatsAppBot-MD-BETA@",
+	"repository": "https://github.com/Alien-Alfa/WhatsAppBot-MD-BETA2",
 	"website": "https://small-sharp-tool.com/",
 	"logo": "https://avatars.githubusercontent.com/u/64305844?v=4",
 	"keywords": ["multi-device","ＡＬＩＥＮ ＡＬＦＡ","BETA 2"],
@@ -163,11 +163,11 @@
 "MENU_BUTTON": {
   "description": "Here is an editable template for you ONLY EDIT THE VALUES OF 'displayText','url','id' THIS IS USED IN THE .menu COMMAND SO EDIT IT WELL",
   "required": false,
-  "value": `[{ urlButton: { displayText: linkbuttid1, url: butturl1 } },
-    { urlButton: { displayText: linkbuttid2, url: butturl2 } },
-    { quickReplyButton: { displayText: `All Menu `, id: 'allmenu'} },
-    { quickReplyButton: { displayText: `List Menu `, id: 'command'} },
-    { quickReplyButton: { displayText: `Ping `, id: 'ping'} }]`
+  "value": '[{ urlButton: { displayText: linkbuttid1, url: butturl1 } },'+
+    '{ urlButton: { displayText: linkbuttid2, url: butturl2 } },'+
+    '{ quickReplyButton: { displayText: `All Menu `, id: 'allmenu'} },'+
+    '{ quickReplyButton: { displayText: `List Menu `, id: 'command'} },'+
+    '{ quickReplyButton: { displayText: `Ping `, id: 'ping'} }]'
 },
 "AUTO_DOWNLOADER": {
   "description": "auto downloader YT and IG (BETA!) (example: active)",
