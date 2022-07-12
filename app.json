@@ -170,7 +170,7 @@
     "value": "active"
           }
   },
-},"buildpacks": [
+"buildpacks": [
   {
     "url": "heroku/nodejs"
   }
