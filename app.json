@@ -163,11 +163,7 @@
 "MENU_BUTTON": {
   "description": "Here is an editable template for you ONLY EDIT THE VALUES OF 'displayText','url','id' THIS IS USED IN THE .menu COMMAND SO EDIT IT WELL",
   "required": false,
-  "value": '[{ urlButton: { displayText: linkbuttid1, url: butturl1 } },'+
-    '{ urlButton: { displayText: linkbuttid2, url: butturl2 } },'+
-    '{ quickReplyButton: { displayText: `All Menu `, id: 'allmenu'} },'+
-    '{ quickReplyButton: { displayText: `List Menu `, id: 'command'} },'+
-    '{ quickReplyButton: { displayText: `Ping `, id: 'ping'} }]'
+  "value": "[{ urlButton: { displayText: linkbuttid1, url: butturl1 } },{ urlButton: { displayText: linkbuttid2, url: butturl2 } },{ quickReplyButton: { displayText: `All Menu `, id: 'allmenu'} },{ quickReplyButton: { displayText: `List Menu `, id: 'command'} },{ quickReplyButton: { displayText: `Ping `, id: 'ping'} }]"
 },
 "AUTO_DOWNLOADER": {
   "description": "auto downloader YT and IG (BETA!) (example: active)",
