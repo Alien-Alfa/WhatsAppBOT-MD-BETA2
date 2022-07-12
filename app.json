@@ -5,7 +5,7 @@
 	"website": "https://small-sharp-tool.com/",
 	"logo": "https://avatars.githubusercontent.com/u/64305844?v=4",
 	"keywords": ["multi-device","ＡＬＩＥＮ ＡＬＦＡ","BETA 2"],
-	
+	"stack": "container",
 	"env": { 
 "OWNER": {
   "description": "Pleas enter Number Of the Owner.",
