@@ -1,0 +1,194 @@
+{
+	"name": "WhatsAppBot MD BETA II",
+	"description": "Fully Costamisable Bot by, Alien-Alfa.",
+	"repository": "https://github.com/Alien-Alfa/WhatsAppBot-MD-BETA@",
+	"website": "https://small-sharp-tool.com/",
+	"logo": "https://avatars.githubusercontent.com/u/64305844?v=4",
+	"keywords": ["multi-device","ＡＬＩＥＮ ＡＬＦＡ","BETA 2"],
+	
+	"env": { 
+"OWNER": {
+  "description": "Pleas enter Number Of the Owner.",
+  "required": false,
+  "value": "0,447405935255"
+}, 
+"SUDO": {
+  "description": "Add superuser to this bot",
+  "required": false,
+  "value": "0,447405935255"
+}, 
+"STICKER_PACK": {
+  "description": "Sticker pack & author name. (leave it if you Wish to use the default)",
+  "required": false,
+  "value": "ＡＬＩＥＮ,ＡＬＦＡ"
+}, 
+"PREMIUM": {
+  "description": "Premium user number",
+  "required": false,
+  "value": ">active"
+},
+ "ZENS_API": {
+  "description": "Get an API key From https://zenzapi.xyz To Use The API Functions.",
+  "required": false,
+  "value": "Alfa"
+},
+"WORKTYPE": {
+  "description": "change the Work Type (public or private)",
+  "required": true,
+  "value": "private"
+},
+"URLBUTTON1": {
+  "description": "URL Button Name and link (leave it if you Wish to use the default:Instagram)",
+  "required": false,
+  "value": "nill,nill"
+},
+"URLBUTTON2": {
+  "description": "Second URL Button Name and link (leave it if you Wish to use the default:YouTube)",
+  "required": false,
+  "value": "nill,nill"
+},
+"AUTO_TYPING": {
+  "description": "Automatic Typing... Status (true or false)",
+  "required": false,
+  "value": false
+},
+"AUTO_READ_PM": {
+  "description": "Auto Read Messages (In PM chat)",
+  "required": false,
+  "value": false
+},
+"AUTO_READ_GROUP": {
+  "description": "Auto Read Messages (In group chat)",
+  "required": false,
+  "value": false
+},
+"AUTO_RECORD": {
+  "description": "Automatic Recording... Status (true or false)",
+  "required": false,
+  "value": false
+},
+"VIDEO_MENU_URL": {
+  "description": "video URL for Video Menu Template ",
+  "required": false,
+  "value": false
+},
+"ALWAYS_ONLINE": {
+  "description": "As the name says always online (true or False)",
+  "required": false,
+  "value": true
+},
+"OWNER_VIEW_NUMBER": {
+  "description": "owner number to be sent in .owner command(example: 447405935355)",
+  "required": false,
+  "value": "447405935355"
+},
+"OWNER_SOCIAL1": {
+  "description": "owner social account info (example: YouTube: alienalfa)",
+  "required": false,
+  "value": "YouTube: alienalfa"
+},
+"OWNER_SOCIAL2": {
+  "description": "owner social account info (example: Instagram: alienalfa)",
+  "required": false,
+  "value": "Instagram: alienalfa"
+},
+"OWNER_PLACE": {
+  "description": "owner location info (example: UK, London, hertfordshire)",
+  "required": false,
+  "value": "UK, London, hertfordshire"
+},
+"TAG_NUMBER": {
+  "description": "Owner No Tag Number(example: 447405935355)",
+  "required": false,
+  "value": "447405935355"
+},
+"THEME_URL": {
+  "description": "Your Main Social account Url (example: https://www.youtube.com/alienalfa)",
+  "required": false,
+  "value": "https://www.youtube.com/alienalfa"
+},
+"WEBSITE": {
+  "description": "your WebSite Or Profile (example: https://www.GITHUB.com/alien-alfa)",
+  "required": false,
+  "value": "https://www.GITHUB.com/alien-alfa"
+},
+"REACT_EMOJI": {
+  "description": "Auto React Emoji (example: 😘)",
+  "required": false,
+  "value": "😘"
+},
+"THEME_EMOJI": {
+  "description": "Main Theme Emoji (example: 🐤)",
+  "required": false,
+  "value": "🐤"
+},
+"THUMB_PIC": {
+  "description": "Main Profile thumbnail Image url (example: https://telegra.ph/file/2079d5baecc926bdd6cd5.jpg)",
+  "required": false,
+  "value": "https://telegra.ph/file/2079d5baecc926bdd6cd5.jpg"
+},
+"LOGO_PIC": {
+  "description": "profile logo Image url (example: https://telegra.ph/file/08f74ebc45220ddc72efb.jpg)",
+  "required": false,
+  "value": "https://telegra.ph/file/08f74ebc45220ddc72efb.jpg"
+},
+"ERROR_PIC": {
+  "description": "error message Image url(example: https://telegra.ph/file/dd2b3b4c1db282aa9efd8.jpg)",
+  "required": false,
+  "value": "https://telegra.ph/file/dd2b3b4c1db282aa9efd8.jpg"
+},
+"THUMBNAIL_PIC": {
+  "description": "Thumbnail Image url (example: https://telegra.ph/file/724dd8eff66255f5e5146.jpg)",
+  "required": false,
+  "value": "https://telegra.ph/file/724dd8eff66255f5e5146.jpg"
+},
+"ANTI_TAG": {
+  "description": "Thumbnail Image url (example: https://telegra.ph/file/724dd8eff66255f5e5146.jpg)",
+  "required": false,
+  "value": "https://telegra.ph/file/724dd8eff66255f5e5146.jpg"
+},
+"ICON": {
+  "description": "antitag on/off (example: ✩)",
+  "required": false,
+  "value": "✩"
+},
+"HEROKU_APP_NAME": {
+  "description": "Heroku App name to manage the worker (you canot use restart if u dont fill thsi and HEROKU_API)",
+  "required": true
+},
+"HEROKU_API_KEY": {
+  "description": "Heroku API key for manage the worker (You canot use restart if u dont fill thsi and APP_NAME)",
+  "required": true
+},
+"MENU_BUTTON": {
+  "description": "Here is an editable template for you ONLY EDIT THE VALUES OF 'displayText','url','id' THIS IS USED IN THE .menu COMMAND SO EDIT IT WELL",
+  "required": false,
+  "value": `[{ urlButton: { displayText: linkbuttid1, url: butturl1 } },
+    { urlButton: { displayText: linkbuttid2, url: butturl2 } },
+    { quickReplyButton: { displayText: `All Menu `, id: 'allmenu'} },
+    { quickReplyButton: { displayText: `List Menu `, id: 'command'} },
+    { quickReplyButton: { displayText: `Ping `, id: 'ping'} }]`
+},
+"AUTO_DOWNLOADER": {
+  "description": "auto downloader YT and IG (BETA!) (example: active)",
+  "required": false,
+  "value": "active"
+}
+},"buildpacks": [
+  {
+    "url": "heroku/nodejs"
+  },
+  {
+    "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
+  },
+  {
+    "url": "https://github.com/clhuang/heroku-buildpack-webp-binaries.git"
+  }
+],
+   "formation": {
+        "worker": {
+            "quantity": 1,
+            "size": "free"
+        }
+    }
+}
