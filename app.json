@@ -29,8 +29,7 @@
 },
  "ZENS_API": {
   "description": "Get an API key From https://zenzapi.xyz To Use The API Functions.",
-  "required": false,
-  "value": "Alfa"
+  "required": false
 },
 "WORKTYPE": {
   "description": "change the Work Type (public or private)",
@@ -68,9 +67,9 @@
   "value": false
 },
 "VIDEO_MENU_URL": {
-  "description": "video URL for Video Menu Template ",
+  "description": "video URL for Video Menu Template(example: https://imgur.com/aexwlcx ) ",
   "required": false,
-  "value": false
+  "value": "https://imgur.com/aexwlcx"
 },
 "ALWAYS_ONLINE": {
   "description": "As the name says always online (true or False)",
@@ -163,7 +162,7 @@
 "MENU_BUTTON": {
   "description": "Here is an editable template for you ONLY EDIT THE VALUES OF 'displayText','url','id' THIS IS USED IN THE .menu COMMAND SO EDIT IT WELL",
   "required": false,
-  "value": "[{ urlButton: { displayText: linkbuttid1, url: butturl1 } },{ urlButton: { displayText: linkbuttid2, url: butturl2 } },{ quickReplyButton: { displayText: `All Menu `, id: 'allmenu'} },{ quickReplyButton: { displayText: `List Menu `, id: 'command'} },{ quickReplyButton: { displayText: `Ping `, id: 'ping'} }]"
+  "value": "[{ urlButton: { displayText: linkbuttid1, url: butturl1 } },			{ urlButton: { displayText: linkbuttid2, url: butturl2 } },			{ quickReplyButton: { displayText: `All Menu `, id: 'allmenu'} },			{ quickReplyButton: { displayText: `List Menu `, id: 'command'} },			{ quickReplyButton: { displayText: `Ping `, id: 'ping'} }]"
 },
 "AUTO_DOWNLOADER": {
   "description": "auto downloader YT and IG (BETA!) (example: active)",
