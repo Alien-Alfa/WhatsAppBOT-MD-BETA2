@@ -1,8 +1,8 @@
 FROM node:lts-buster
 
-WORKDIR /root/AlienAlfa/
+RUN git clone https://github.com/Alien-alfa/WhatsAppBOT-MD-BETA2 /root/AlienAlfa
 
-COPY ./ /root/AlienAlfa/
+WORKDIR /root/AlienAlfa/
 
 RUN apt-get update && \
   apt-get install -y \
@@ -23,7 +23,5 @@ RUN npm install -g forever
 RUN npm i cfonts
 
 RUN npm i -g heroku
-
-COPY . .
 
 CMD ["npm", "start"]
