@@ -1,0 +1,1 @@
+exports.lang = require('./LangEn')
