@@ -39,7 +39,7 @@
 
 
 <p align="center">
-  <a href="https://www.instagram.com/_the_soul_rider_/"><img src="https://github.com/Alien-alfa/Alien-alfa/blob/beta/img/Bungee%20Shades.png?raw=true" width="500" alt="Profile"/> </a>
+  <a href="https://www.instagram.com/alienalfa/"><img src="https://github.com/Alien-alfa/Alien-alfa/blob/beta/img/Bungee%20Shades.png?raw=true" width="500" alt="Profile"/> </a>
 </p>
 
 <p align="center">
@@ -72,7 +72,7 @@
 <h3 align="center">Contact Me:</h3>
 <p align="center">
 <a href="#" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/twitter.svg" alt="kyrie_baran" height="30" width="40" /></a>
-<a href="https://instagram.com/_the_soul_rider_" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/instagram.svg" alt="kyrie.baran" height="30" width="40" /></a>
+<a href="https://instagram.com/alienalfa" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/instagram.svg" alt="kyrie.baran" height="30" width="40" /></a>
 </p>
 
 <br><br>
@@ -257,7 +257,7 @@ This project is open source so all the codes are clear. Neither less nor more; y
 If you are concerned about security, you can install it on your own computer. If you think someone else has captured your data, simply click on **Whatsapp> Three Dots> Linked Devices> Logout** from all sessions button.
 
 ### ⚠️ Is it paid?
-**Of course not.** It will never happen. But you can donate to us. You can reach me via [Instagram](https://www.instagram.com/_the_soul_rider_/) .
+**Of course not.** It will never happen. But you can donate to us. You can reach me via [Instagram](https://www.instagram.com/alienalfa/) .
 
 ### ⚠️ Warning! 
 ```
