@@ -108,7 +108,7 @@ OR
   # `Deploy In Heroku`
 
 
-<a href="https://gist.github.com/Alien-alfa/4a3f940e9e65eee62fd76ffebf302cf1"><img title="ＡＬＩＥＮ ＡＬＦＡ" src="https://www.herokucdn.com/deploy/button.svg" width="400"></a>
+<a href="https://gist.github.com/Alien-alfa/26e58dd52796b63f8ec911b11cfad492"><img title="ＡＬＩＥＮ ＡＬＦＡ" src="https://www.herokucdn.com/deploy/button.svg" width="400"></a>
 
 
   
