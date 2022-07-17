@@ -165,6 +165,10 @@
     "required": false,
     "value": "[{ urlButton: { displayText: linkbuttid1, url: butturl1 } },                    { urlButton: { displayText: linkbuttid2, url: butturl2 } },                    { quickReplyButton: { displayText: `All Menu `, id: 'allmenu'} },                    { quickReplyButton: { displayText: `List Menu `, id: 'command'} },                    { quickReplyButton: { displayText: `Ping `, id: 'ping'} }]"
   },
+  "SESSION_ID": {
+    "description": "Add your Session ID here you got from Your Bot",
+    "required": true
+        },
   "AUTO_DOWNLOADER": {
     "description": "auto downloader YT and IG (BETA!) (example: active)",
     "required": false,
