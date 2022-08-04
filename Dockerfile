@@ -1,8 +1,8 @@
 FROM node:lts-buster
 
-RUN git clone https://github.com/Alien-alfa/WhatsAppBOT-MD-BETA2 /root/AlienAlfa
-
 WORKDIR /root/AlienAlfa/
+
+COPY ./ /root/AlienAlfa/
 
 RUN apt-get update && \
   apt-get install -y \
