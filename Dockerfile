@@ -14,8 +14,6 @@ RUN apt-get update && \
 
 RUN npm install -g npm@8.11.0
 
-RUN set NODE_OPTIONS=--max_old_space_size=2048
-
 RUN npm install -g nodemon 
 
 RUN npm install -g forever
