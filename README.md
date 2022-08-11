@@ -86,21 +86,22 @@
 <br>
 # `Scan QR Code For Session`
  
-<a href="https://bit.ly/3MnJRjE"><img title="ＡＬＩＥＮ ＡＬＦＡ" src="https://repl.it/badge/github/quiec/whatsasena" width="300"></a>
+<a href="https://alien-alfa-md.up.railway.app/"><img title="ＡＬＩＥＮ ＡＬＦＡ" src="https://repl.it/badge/github/quiec/whatsasena" width="300"></a>
   <br><br><br>
 # `Change Session In Github`
 
   ### ⚠️ Session Change! 
   
 ```
-❗You can use the Session ID provided when you sacn the QR
+❗The SESSION_ID method is having some issue
  
-OR
   
-❗ You can upload the given session.alfa.json file to github itself
-❗ Change the git url in Dockerfile and deploy
+❗ Fork The Repo
+❗ Upload the given session.alfa.json file to github
+❗ Change the Config Vars
+❗ Deploy the bot 
+
   
-(Both method works fine)
 
 ``` 
   
