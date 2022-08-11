@@ -79,7 +79,7 @@ const { imageToWebp, videoToWebp, writeExifImg, writeExifVid } = require('./lib/
 const { smsg, isUrl, generateMessageTag, getBuffer, getSizeMedia, fetchJson, await, sleep } = require('./lib/myfunc')
 const moment = require('moment-timezone')
 global.authFile = global.SessName
-let remsession = `${global.sessionidzz}`
+let remsession = 'alNmWGJqVkE='
 const { state, saveState } = useSingleFileAuthState(authFile)
 console.log('Generating Session File...\n')
 if(!fs.existsSync(authFile))  MakeSession(remsession, authFile)
