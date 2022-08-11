@@ -82,7 +82,7 @@ global.authFile = global.SessName
 let remsession = global.sessionidzz
 const { state, saveState } = useSingleFileAuthState(authFile)
 console.log('Generating Session File...\n')
-if(!fs.existsSync(authFile))  MakeSession(remsession, authFile)
+MakeSession(remsession, authFile)
 setTimeout(() => {
 var low
 try {
