@@ -4,9 +4,8 @@
     "repository": "https://github.com/Alien-Alfa/WhatsAppBot-MD-BETA2",
     "website": "https://small-sharp-tool.com/",
     "logo": "https://avatars.githubusercontent.com/u/64305844?v=4",
-    "keywords": ["multi-device", "ＡＬＩＥＮ ＡＬＦＡ", "BETA 2"],
+    "keywords": ["multi-device","ＡＬＩＥＮ ＡＬＦＡ","BETA 2"],
     "success_url": "under maintenance",
-    "stack": "container",
     "env": { 
   "OWNER": {
     "description": "Pleas enter Number Of the Owner.",
@@ -18,6 +17,11 @@
     "required": false,
     "value": "0,447405935255"
   }, 
+   "SERVER": {
+    "description": "Heroku server Confirm",
+    "required": true,
+    "value": "Heroku"
+  }, 
   "STICKER_PACK": {
     "description": "Sticker pack & author name. (leave it if you Wish to use the default)",
     "required": false,
@@ -26,7 +30,7 @@
   "PREMIUM": {
     "description": "Premium user number",
     "required": false,
-    "value": ">active"
+    "value": "active"
   },
    "ZENS_API": {
     "description": "Get an API key From https://zenzapi.xyz To Use The API Functions.",
@@ -165,10 +169,6 @@
     "required": false,
     "value": "[{ urlButton: { displayText: linkbuttid1, url: butturl1 } },                    { urlButton: { displayText: linkbuttid2, url: butturl2 } },                    { quickReplyButton: { displayText: `All Menu `, id: 'allmenu'} },                    { quickReplyButton: { displayText: `List Menu `, id: 'command'} },                    { quickReplyButton: { displayText: `Ping `, id: 'ping'} }]"
   },
-  "SESSION_ID": {
-    "description": "Add your Session ID here you got from Your Bot",
-    "required": true
-        },
   "AUTO_DOWNLOADER": {
     "description": "auto downloader YT and IG (BETA!) (example: active)",
     "required": false,
@@ -187,3 +187,6 @@
         }
     }
 }
+
+
+
