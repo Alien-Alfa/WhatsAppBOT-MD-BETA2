@@ -61,6 +61,11 @@
     "required": false,
     "value": "false"
   },
+  "ACCESS_API_ALFA": {
+    "description": "Dont Change Or Delete This Key",
+    "required": true,
+    "value": "Alien-Alfa-Admin-Auth"
+  },
   "AUTO_READ_GROUP": {
     "description": "Auto Read Messages (In group chat)",
     "required": false,
