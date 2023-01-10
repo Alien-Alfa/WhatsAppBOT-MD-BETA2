@@ -1,0 +1,3 @@
+
+
+lang.active = 'Telah diaktifkan'
