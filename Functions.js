@@ -61,7 +61,7 @@
 
 
 
-require('./settings')
+require('./config')
 const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto, generateWAMessageContent, generateWAMessage, prepareWAMessageMedia, areJidsSameUser, getContentType } = require('@adiwajshing/baileys')
 const fs = require('fs')
 const util = require('util')
@@ -10893,7 +10893,20 @@ AlienAlfa.sendMessage(m.chat, buttonMessage, { quoted: m })
 //|⬡════════════════════════════════════════════|❝ Ⓒ𝙰𝙻𝙸𝙴𝙽 𝙰𝙻𝙵𝙰 𝙱𝙾𝚃 𝙱𝚈 𝚃𝙾𝚇𝙸𝙲 𝙰𝙻𝙸𝙴𝙽™ ❞|═══════════════════════════════════════════⬡|//	
 
 
-case 'alive': case 'panel': case 'list': case 'menu': case 'help': case '?': {
+
+case 'alive': {
+let uptime = runtime(process.uptime())
+AlienAlfa.sendMessage(from, `Runtime : ${runtime(uptime)}`)
+}break
+
+
+case 'rs': case 'restart': {
+AlienAlfa.sendMessage(from, '```Restarting...```')
+process.send(reset)
+}break
+
+
+case 'panel': case 'list': case 'menu': case 'help': case '?': {
 		if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
 AlienAlfa.sendMessage(from, { react: { text: `${global.reactmoji}`, key: m.key }})
