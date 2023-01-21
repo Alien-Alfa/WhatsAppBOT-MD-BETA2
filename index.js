@@ -63,7 +63,7 @@
 
 require('./config')
 const { default: AlfaConnect, Browsers, useMultiFileAuthState, useSingleFileAuthState, DisconnectReason, fetchLatestBaileysVersion, generateForwardMessageContent, prepareWAMessageMedia, generateWAMessageFromContent, generateMessageID, downloadContentFromMessage, makeInMemoryStore, jidDecode, proto } = require("@adiwajshing/baileys")
-
+const qrcode = require("qrcode-terminal")
 const pino = require('pino')
 const { Boom } = require('@hapi/boom')
 const fs = require('fs')
@@ -153,7 +153,7 @@ Change thw file name to "session.alfa.json" and put it in the main dir
 
 Enjoy!`)) }
 
-if(!fs.existsSync('./session.alfa.json')) {console.log(require('chalk').redBright('------------------------------------\n------------------------------------\n------------------------------------\n------------------------------------\n------------------------------------\n\n𝙋𝙧𝙤𝙘𝙚𝙨𝙨 𝙀𝙭𝙞𝙩𝙚𝙙: 𝙉𝙤 𝙖𝙪𝙩𝙝𝙁𝙞𝙡𝙚\n------------------------------------\n------------------------------------\n------------------------------------\n------------------------------------\n------------------------------------'));process.send('reset')}; 
+// if(!fs.existsSync('./session.alfa.json')) {console.log(require('chalk').redBright('------------------------------------\n------------------------------------\n------------------------------------\n------------------------------------\n------------------------------------\n\n𝙋𝙧𝙤𝙘𝙚𝙨𝙨 𝙀𝙭𝙞𝙩𝙚𝙙: 𝙉𝙤 𝙖𝙪𝙩𝙝𝙁𝙞𝙡𝙚\n------------------------------------\n------------------------------------\n------------------------------------\n------------------------------------\n------------------------------------'));process.send('reset')}; 
 
 
 async function startalfa() {
