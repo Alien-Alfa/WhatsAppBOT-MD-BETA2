@@ -11107,7 +11107,7 @@ case 'alive': {
     
     case 'rs': case 'restart': {
     AlienAlfa.sendMessage(from, {text: '```Restarting...```'})
-    process.send(reset)
+    process.send('reset')
     }break
     
     
