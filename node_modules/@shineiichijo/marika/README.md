@@ -33,7 +33,9 @@ const mangaClient = new Manga();
 ```ts
 await animeClient.getRandomAnime(); //will return random anime with info
 
-await animeClient.getAnimeById(id); //will return the info for the given anime id
+await animeClient.getAnimeById(id); //will return the info of the given anime id
+
+await animeClient.getAnimeFullById(id) //will return the complete info of the given anime id
 
 await animeClient.getAnimeCharacters(id); //will return characters of the given anime id
 

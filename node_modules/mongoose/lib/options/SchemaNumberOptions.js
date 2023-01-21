@@ -26,7 +26,7 @@ const opts = require('./propertyOptions');
  * @api public
  * @property min
  * @memberOf SchemaNumberOptions
- * @type Number
+ * @type {Number}
  * @instance
  */
 
@@ -39,7 +39,7 @@ Object.defineProperty(SchemaNumberOptions.prototype, 'min', opts);
  * @api public
  * @property max
  * @memberOf SchemaNumberOptions
- * @type Number
+ * @type {Number}
  * @instance
  */
 
@@ -50,6 +50,7 @@ Object.defineProperty(SchemaNumberOptions.prototype, 'max', opts);
  * equal to one of the given values.
  *
  * #### Example:
+ *
  *     const schema = new Schema({
  *       favoritePrime: {
  *         type: Number,
@@ -61,7 +62,7 @@ Object.defineProperty(SchemaNumberOptions.prototype, 'max', opts);
  * @api public
  * @property enum
  * @memberOf SchemaNumberOptions
- * @type Array
+ * @type {Array}
  * @instance
  */
 
@@ -71,6 +72,7 @@ Object.defineProperty(SchemaNumberOptions.prototype, 'enum', opts);
  * Sets default [populate options](/docs/populate.html#query-conditions).
  *
  * #### Example:
+ *
  *     const schema = new Schema({
  *       child: {
  *         type: Number,
@@ -86,7 +88,7 @@ Object.defineProperty(SchemaNumberOptions.prototype, 'enum', opts);
  * @api public
  * @property populate
  * @memberOf SchemaNumberOptions
- * @type Object
+ * @type {Object}
  * @instance
  */
 

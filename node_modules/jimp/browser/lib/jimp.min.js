@@ -1,5 +1,5 @@
 /*
-Jimp v0.16.0
+Jimp v0.16.1
 https://github.com/oliver-moran/jimp
 Ported for the Web by Phil Seaton
 MIT License

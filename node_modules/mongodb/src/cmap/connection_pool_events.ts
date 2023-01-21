@@ -38,6 +38,18 @@ export class ConnectionPoolCreatedEvent extends ConnectionPoolMonitoringEvent {
 }
 
 /**
+ * An event published when a connection pool is ready
+ * @public
+ * @category Event
+ */
+export class ConnectionPoolReadyEvent extends ConnectionPoolMonitoringEvent {
+  /** @internal */
+  constructor(pool: ConnectionPool) {
+    super(pool);
+  }
+}
+
+/**
  * An event published when a connection pool is closed
  * @public
  * @category Event
@@ -94,7 +106,11 @@ export class ConnectionClosedEvent extends ConnectionPoolMonitoringEvent {
   serviceId?: ObjectId;
 
   /** @internal */
-  constructor(pool: ConnectionPool, connection: Connection, reason: string) {
+  constructor(
+    pool: ConnectionPool,
+    connection: Pick<Connection, 'id' | 'serviceId'>,
+    reason: string
+  ) {
     super(pool);
     this.connectionId = connection.id;
     this.reason = reason || 'unknown';
@@ -171,9 +187,15 @@ export class ConnectionPoolClearedEvent extends ConnectionPoolMonitoringEvent {
   /** @internal */
   serviceId?: ObjectId;
 
+  interruptInUseConnections?: boolean;
+
   /** @internal */
-  constructor(pool: ConnectionPool, serviceId?: ObjectId) {
+  constructor(
+    pool: ConnectionPool,
+    options: { serviceId?: ObjectId; interruptInUseConnections?: boolean } = {}
+  ) {
     super(pool);
-    this.serviceId = serviceId;
+    this.serviceId = options.serviceId;
+    this.interruptInUseConnections = options.interruptInUseConnections;
   }
 }

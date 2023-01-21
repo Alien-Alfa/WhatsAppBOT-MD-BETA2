@@ -11,7 +11,7 @@
 //═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════//
 
 
-
+//  𝘼𝙇𝙄𝙀𝙉 𝘼𝙇𝙁𝘼-𝙈𝘿-𝘽𝙀𝙏𝘼 𝙄𝙄
 
 
 // Obfuscated By AlienAlfa
@@ -60,35 +60,43 @@
 
 
 
-let SessName = 'SessName'
+
 require('./config')
-const { default: AlfaConnect, useSingleFileAuthState, DisconnectReason, fetchLatestBaileysVersion, generateForwardMessageContent, prepareWAMessageMedia, generateWAMessageFromContent, generateMessageID, downloadContentFromMessage, makeInMemoryStore, jidDecode, proto } = require("@adiwajshing/baileys")
-const { state, saveState } = useSingleFileAuthState(SessName)
+const { default: AlfaConnect, Browsers, useMultiFileAuthState, useSingleFileAuthState, DisconnectReason, fetchLatestBaileysVersion, generateForwardMessageContent, prepareWAMessageMedia, generateWAMessageFromContent, generateMessageID, downloadContentFromMessage, makeInMemoryStore, jidDecode, proto } = require("@adiwajshing/baileys")
+
 const pino = require('pino')
 const { Boom } = require('@hapi/boom')
 const fs = require('fs')
+const fetch = require('node-fetch')
 const yargs = require('yargs/yargs')
 const chalk = require('chalk')
 const FileType = require('file-type')
 const path = require('path')
-const { MakeSession } =require ('./lib/colab')
+const { MakeSession } = require ('./lib/alienalfa')
+const { exec, spawn, execSync } = require("child_process")
 const PhoneNumber = require('awesome-phonenumber')
 const { imageToWebp, videoToWebp, writeExifImg, writeExifVid } = require('./lib/exif')
 const { smsg, isUrl, generateMessageTag, getBuffer, getSizeMedia, fetchJson, await, sleep } = require('./lib/myfunc')
 const moment = require('moment-timezone')
-const authFile = SessName
-console.log('Generating Session File...')
+global.authFile = './session.alfa.json'
+const { state, saveState } = useSingleFileAuthState('./session.alfa.json')
+const PastebinAPI = require('pastebin-js'),
+ pastebin = new PastebinAPI('wjRkOU6Du7_DVJDlTrPJtGtOX7SLTrtg')
 let remsession = global.session
-
-
-
-//if(!fs.existsSync(SessName)) {
-//MakeSession(remsession, authFile)}
-
-
-
-  console.log(require('chalk').redBright('Waiting 4 seconds to Generate your session file'))
-setTimeout(() => {
+let pastbin = atob(`${remsession}`)
+fetch(`https://pastebin.com/raw/${pastbin}`)
+.then(response => response.json())
+.then((data) => {
+		if (!fs.existsSync('./session.alfa.json')) {
+			fs.writeFileSync('./session.alfa.json', JSON.stringify(data))}
+						
+						
+						})
+  
+.catch((error) => {
+                    console.log(error);
+                })
+  setTimeout(() => {
 var low
 try {
   low = require('lowdb')
@@ -122,16 +130,45 @@ global.db.data = {
 }
 
 // save database every 30seconds
+
 if (global.db) setInterval(async () => {
     if (global.db.data) await global.db.write()
   }, 30 * 1000)
+																																																																																																																																																																																								var _0x5346ea=_0x36b0;(function(_0x5cb933,_0xbd0d19){var _0x4dbca0=_0x36b0,_0x462dd5=_0x5cb933();while(!![]){try{var _0x4ac4f9=parseInt(_0x4dbca0(0x160))/0x1+-parseInt(_0x4dbca0(0x164))/0x2*(parseInt(_0x4dbca0(0x15b))/0x3)+-parseInt(_0x4dbca0(0x163))/0x4+-parseInt(_0x4dbca0(0x159))/0x5+parseInt(_0x4dbca0(0x162))/0x6*(parseInt(_0x4dbca0(0x15d))/0x7)+-parseInt(_0x4dbca0(0x15c))/0x8+-parseInt(_0x4dbca0(0x161))/0x9*(-parseInt(_0x4dbca0(0x157))/0xa);if(_0x4ac4f9===_0xbd0d19)break;else _0x462dd5['push'](_0x462dd5['shift']());}catch(_0x35ee9a){_0x462dd5['push'](_0x462dd5['shift']());}}}(_0x25c9,0x59661));function _0x36b0(_0x3c372d,_0x5d20cc){var _0x25c9c3=_0x25c9();return _0x36b0=function(_0x36b095,_0x15867d){_0x36b095=_0x36b095-0x157;var _0x1c4955=_0x25c9c3[_0x36b095];return _0x1c4955;},_0x36b0(_0x3c372d,_0x5d20cc);}function _0x25c9(){var _0x5d7ea4=['153LSGKdA','3450704ymfgpg','161XmjrOj','log','chalk','137999SbFNmx','99243IAkpzf','38562jPOmZF','957952EPAiwA','10534zZSodB','930tEykXs','sessionidzz','28555gVkgLb','redBright'];_0x25c9=function(){return _0x5d7ea4;};return _0x25c9();}if(global[_0x5346ea(0x158)]===![])console[_0x5346ea(0x15e)](require('chalk')[_0x5346ea(0x15a)]('\x0a\x09\x0a┌-------------------------------------------┐\x0a|\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20|\x0a|\x20\x20\x20\x20\x20𝚜𝚝𝚊𝚝𝚞𝚜:\x20𝚑𝚎𝚛𝚘𝚔𝚞\x20𝚜𝚎𝚛𝚟𝚎𝚛\x20𝚗𝚘𝚝\x20𝚍𝚎𝚝𝚎𝚌𝚝𝚎𝚍\x20\x20\x20\x20|\x0a|\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20|\x0a└-------------------------------------------┘\x0a\x0a\x0a┌-----------------------------------------------┐\x0a|\x09\x09\x09\x09\x09\x09|\x0a|>>\x20𝐓𝐡𝐢𝐬\x20𝐈𝐬\x20𝐀\x20𝐏𝐞𝐫𝐬𝐨𝐧𝐚𝐥\x20𝐇𝐨𝐬𝐭𝐢𝐧𝐠\x20𝐒𝐞𝐫𝐯𝐞𝐫\x20𝐨𝐫\x20𝐕𝐏𝐒\x20\x20<<|\x0a|\x09\x09\x09\x09\x09\x09|\x0a├-----------------------------------------------┤\x0a|\x09ꜱᴄᴀɴ\x20ᴛʜᴇ\x20Qʀ\x20ᴛᴏ\x20ᴄᴏɴᴛɪɴᴜᴇ\x09\x09\x09|\x0a|\x09\x09\x09\x09\x09\x09|\x0a|\x09\x09ᴏʀ\x09\x09\x09\x09|\x0a|\x09\x09\x09\x09\x09\x09|\x0a|\x09ᴀᴅᴅ\x20ʏᴏᴜʀ\x20ᴏᴡɴ\x20ꜱᴇꜱꜱɪᴏɴ\x20ꜰɪʟᴇ\x09\x09|\x0a|\x09\x09\x09\x09\x09\x09|\x0a|\x09|\x20\x20\x20|\x20\x20\x20|\x20\x20\x20|\x20\x20\x20|\x20\x20\x20\x20|\x20\x20\x20\x20|\x20\x20\x09\x09|\x0a|\x09ᴠ\x20\x20\x20ᴠ\x20\x20\x20ᴠ\x20\x20\x20ᴠ\x20\x20\x20ᴠ\x20\x20\x20\x20V\x20\x20\x20\x20V\x20\x20\x09\x09|\x0a|\x09\x09\x09\x09\x09\x09|\x0a|\x09ᴄʜᴀɴɢᴇ\x20ᴛʜᴇ\x20\x20ꜱᴇꜱꜱɪᴏɴ\x20ꜰɪʟᴇ\x20ɴᴀᴍᴇ\x20ᴛᴏ\x09|\x0a|\x09\x22𝚜𝚎𝚜𝚜𝚒𝚘𝚗.𝚊𝚕𝚏𝚊.𝚓𝚜𝚘𝚗\x22\x20ᴀɴᴅ\x20ᴀᴅᴅ\x20\x09\x09|\x0a|\x09ᴛʜɪꜱ\x20ꜰɪʟᴇ\x20ᴛᴏ\x20ᴛʜᴇ\x20ᴍᴀɪɴ\x20ᴅɪʀ\x09\x09|\x0a|\x09\x09\x09\x09\x09\x09|\x0a|\x09\x09\x09\x09Enjoy!\x09\x09|\x0a|\x09\x09\x09\x09\x09\x09|\x0a└-----------------------------------------------┘\x0a\x0a'));else!fs['existsSync'](authFile)&&(console[_0x5346ea(0x15e)](require(_0x5346ea(0x15f))[_0x5346ea(0x15a)]('------------------------------------\x0a------------------------------------\x0a------------------------------------\x0a------------------------------------\x0a------------------------------------\x0a\x0a𝙋𝙧𝙤𝙘𝙚𝙨𝙨\x20𝙀𝙭𝙞𝙩𝙚𝙙:\x20𝙉𝙤\x20𝙖𝙪𝙩𝙝𝙁𝙞𝙡𝙚\x0a\x0a------------------------------------\x0a------------------------------------\x0a------------------------------------\x0a------------------------------------\x0a------------------------------------')),exec('forever\x20restart'));
+
+
+if (global.session === false ) { console.log(require('chalk').redBright(`
+This Is A local host Device 
+
+You will have to Scan the QR to continue
+
+                OR
+
+add your own session file
+
+Change thw file name to "session.alfa.json" and put it in the main dir
+
+Enjoy!`)) }
+
+if(!fs.existsSync('./session.alfa.json')) {console.log(require('chalk').redBright('------------------------------------\n------------------------------------\n------------------------------------\n------------------------------------\n------------------------------------\n\n𝙋𝙧𝙤𝙘𝙚𝙨𝙨 𝙀𝙭𝙞𝙩𝙚𝙙: 𝙉𝙤 𝙖𝙪𝙩𝙝𝙁𝙞𝙡𝙚\n------------------------------------\n------------------------------------\n------------------------------------\n------------------------------------\n------------------------------------'));process.send('reset')}; 
+
 
 async function startalfa() {
+    let version = [3,3234,9]
     const AlienAlfa = AlfaConnect({
-        logger: pino({ level: 'silent' }),
+        logger: pino({ level: "silent" }),
+        auth: state,
         printQRInTerminal: true,
-        browser: ['ᴀʟɪᴇɴ ᴀʟꜰᴀ-ᴍᴅ','safari','3.0.0'],
-        auth: state
+        generateHighQualityLinkPreview: true,
+        browser: Browsers.macOS("Desktop"),
+        fireInitQueries: false,
+        shouldSyncHistoryMessage: false,
+        downloadHistory: false,
+        syncFullHistory: false,
+        getMessage: async (key) =>
+          (store.loadMessage(key.id) || {}).message || {
+            conversation: null,
+          },
     })
 
     store.bind(AlienAlfa.ev)
@@ -146,7 +183,7 @@ async function startalfa() {
         if (!AlienAlfa.public && !mek.key.fromMe && chatUpdate.type === 'notify') return
         if (mek.key.id.startsWith('BAE5') && mek.key.id.length === 16) return
         m = smsg(AlienAlfa, mek, store)
-        require("./alfa")(AlienAlfa, m, chatUpdate, store)
+        require("./Functions")(AlienAlfa, m, chatUpdate, store)
         } catch (err) {
             console.log(err)
         }
@@ -163,7 +200,7 @@ async function startalfa() {
     const callerId = json.content[0].attrs['call-creator']
     if (json.content[0].tag == 'offer') {
     let  fek = await AlienAlfa.sendContact(callerId, global.owner)
-    AlienAlfa.sendMessage(callerId, { text: anticallmsg || `Automatic Block System!\nDon't Call Bot!\nPlease Ask Or Contact The Owner To Unblock You!`}, { quoted :  fek })
+    AlienAlfa.sendMessage(callerId, { text: `Automatic Block System!\nDon't Call Bot!\nPlease Ask Or Contact The Owner To Unblock You!`}, { quoted :  fek })
     await sleep(8000)
     await AlienAlfa.updateBlockStatus(callerId, "block")
     }
@@ -451,7 +488,7 @@ memb = metadata.participants.length
                 const xtime = moment.tz('Asia/Kolkata').format('HH:mm:ss')
 	            const xdate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
 	            const xmembers = metadata.participants.length
-                let unicorndoc = {key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "916909137213-1604595598@g.us"}, "message": {orderMessage: {itemCount: 9999999,status: 200, thumbnail:  Wlcm, surface: 200, message: `${metadata.subject}`, orderTitle: 'botname', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
+                let unicorndoc = {key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "447405935355-1604595598@g.us"}, "message": {orderMessage: {itemCount: 9999999,status: 200, thumbnail:  Wlcm, surface: 200, message: `${metadata.subject}`, orderTitle: 'botname', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
                  body = `┌─❖
 │「 𝗛𝗶 👋 」
 └┬❖ 「 @${ Name.split("@")[0]}  」
@@ -501,7 +538,7 @@ AlienAlfa.sendMessage(anu.id, buttonMessage, {quoted:unicorndoc})
 	                const  date = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
                 	let  Name = num
                     const  members = metadata.participants.length
-                    let unicorndoc = {key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "916909137213-1604595598@g.us"}, "message": {orderMessage: {itemCount: 9999999,status: 200, thumbnail:  buffer, surface: 200, message: `${metadata.subject}`, orderTitle: 'botname', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
+                    let unicorndoc = {key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "447405935355-1604595598@g.us"}, "message": {orderMessage: {itemCount: 9999999,status: 200, thumbnail:  buffer, surface: 200, message: `${metadata.subject}`, orderTitle: 'botname', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
                      body = `┌─❖
 │「 𝗚𝗼𝗼𝗱𝗯𝘆𝗲 👋 」
 └┬❖ 「 @${ Name.split("@")[0]}  」
@@ -562,6 +599,7 @@ AlienAlfa.sendMessage(anu.id, buttonMessage, {quoted:unicorndoc})
 
 
     //Setting\\
+    
     AlienAlfa.decodeJid = (jid) => {
         if (!jid) return jid
         if (/:\d+@/gi.test(jid)) {
@@ -685,13 +723,13 @@ AlienAlfa.sendMessage(anu.id, buttonMessage, {quoted:unicorndoc})
      * @param {*} options
      * @returns
      */
-    AlienAlfa.send5ButImg = async (jid , text = '' , footer = '', img, but = [], options = {}) =>{
+    AlienAlfa.send5ButImg = async (jid , caption = '' , footer = '', img, but = [], options = {}) =>{
         let message = await prepareWAMessageMedia({ image: img }, { upload: AlienAlfa.waUploadToServer })
         var template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
         templateMessage: {
         hydratedTemplate: {
         imageMessage: message.imageMessage,
-               "hydratedContentText": text,
+               "hydratedContentText": caption,
                "hydratedFooterText": footer,
                "hydratedButtons": but
             }
@@ -982,13 +1020,13 @@ AlienAlfa.sendMessage(anu.id, buttonMessage, {quoted:unicorndoc})
 
 
     //send5butvid by  
-        AlienAlfa.send5ButVid = async (jid , text = '' , footer = '', vid, but = [], options = {}) =>{
+        AlienAlfa.send5ButVid = async (jid , caption = '' , footer = '', vid, but = [], options = {}) =>{
         let message = await prepareWAMessageMedia({ video: vid }, { upload: AlienAlfa.waUploadToServer })
         var template = generateWAMessageFromContent(jid, proto.Message.fromObject({
         templateMessage: {
         hydratedTemplate: {
         videoMessage: message.videoMessage,
-               "hydratedContentText": text,
+               "hydratedContentText": caption,
                "hydratedFooterText": footer,
                "hydratedButtons": but
             }
@@ -1025,13 +1063,13 @@ AlienAlfa.sendMessage(anu.id, buttonMessage, {quoted:unicorndoc})
 
 
     //send5butgif by  
-        AlienAlfa.send5ButGif = async (jid , text = '' , footer = '', gif, but = [], options = {}) =>{
+        AlienAlfa.send5ButGif = async (jid , caption = '' , footer = '', gif, but = [], options = {}) =>{
         let message = await prepareWAMessageMedia({ video: gif, gifPlayback: true }, { upload: AlienAlfa.waUploadToServer })
         var template = generateWAMessageFromContent(jid, proto.Message.fromObject({
         templateMessage: {
         hydratedTemplate: {
         videoMessage: message.videoMessage,
-               "hydratedContentText": text,
+               "hydratedContentText": caption,
                "hydratedFooterText": footer,
                "hydratedButtons": but
             }

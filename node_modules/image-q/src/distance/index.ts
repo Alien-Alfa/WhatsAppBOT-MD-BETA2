@@ -1,33 +1,24 @@
 /**
  * @preserve
- * Copyright 2015-2016 Igor Bezkrovnyi
+ * Copyright 2015-2018 Igor Bezkrovnyi
  * All rights reserved. (MIT Licensed)
  *
  * iq.ts - Image Quantization Library
  */
-import { AbstractDistanceCalculator } from "./abstractDistanceCalculator"
-import { CIE94Textiles, CIE94GraphicArts } from "./cie94"
-import { CIEDE2000 } from "./ciede2000"
-import { CMETRIC } from "./cmetric"
-import { AbstractEuclidean, Euclidean, EuclideanRgbQuantWOAlpha, EuclideanRgbQuantWithAlpha } from "./euclidean"
-import { AbstractManhattan, Manhattan, ManhattanSRGB, ManhattanNommyde } from "./manhattan"
-import { PNGQUANT } from "./pngQuant"
-
+export { AbstractDistanceCalculator } from './distanceCalculator';
+export { CIE94Textiles, CIE94GraphicArts } from './cie94';
+export { CIEDE2000 } from './ciede2000';
+export { CMetric } from './cmetric';
 export {
-    AbstractDistanceCalculator,
-    CIE94Textiles,
-    CIE94GraphicArts,
-    CIEDE2000,
-    CMETRIC,
-    PNGQUANT,
-
-    AbstractEuclidean,
-    Euclidean,
-    EuclideanRgbQuantWithAlpha,
-    EuclideanRgbQuantWOAlpha,
-
-    AbstractManhattan,
-    Manhattan,
-    ManhattanSRGB,
-    ManhattanNommyde
-}
+  AbstractEuclidean,
+  Euclidean,
+  EuclideanBT709NoAlpha,
+  EuclideanBT709,
+} from './euclidean';
+export {
+  AbstractManhattan,
+  Manhattan,
+  ManhattanBT709,
+  ManhattanNommyde,
+} from './manhattan';
+export { PNGQuant } from './pngQuant';

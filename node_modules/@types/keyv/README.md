@@ -8,7 +8,7 @@ This package contains type definitions for keyv (https://github.com/lukechilds/k
 Files were exported from https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/keyv.
 
 ### Additional Details
- * Last updated: Tue, 07 Sep 2021 09:31:23 GMT
+ * Last updated: Thu, 17 Mar 2022 05:31:42 GMT
  * Dependencies: [@types/node](https://npmjs.com/package/@types/node)
  * Global values: none
 

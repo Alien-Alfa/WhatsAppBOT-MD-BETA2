@@ -1,25 +1,14 @@
 /**
  * @preserve
- * Copyright 2015-2016 Igor Bezkrovnyi
+ * Copyright 2015-2018 Igor Bezkrovnyi
  * All rights reserved. (MIT Licensed)
  *
  * iq.ts - Image Quantization Library
  */
-import { IPaletteQuantizer } from "./common"
-import { NeuQuant } from "./neuquant/neuquant"
-import { NeuQuantFloat } from "./neuquant/neuquantFloat"
-import { RGBQuant } from "./rgbquant/rgbquant"
-import { ColorHistogram } from "./rgbquant/colorHistogram"
-import { WuQuant, WuColorCube } from "./wu/wuQuant"
-
-export {
-    IPaletteQuantizer,
-
-    NeuQuant,
-    NeuQuantFloat,
-    RGBQuant,
-    WuQuant,
-
-    ColorHistogram,
-    WuColorCube
-}
+export { AbstractPaletteQuantizer } from './paletteQuantizer';
+export { NeuQuant } from './neuquant/neuquant';
+export { NeuQuantFloat } from './neuquant/neuquantFloat';
+export { RGBQuant } from './rgbquant/rgbquant';
+export { ColorHistogram } from './rgbquant/colorHistogram';
+export { WuQuant, WuColorCube } from './wu/wuQuant';
+export { PaletteQuantizerYieldValue } from './paletteQuantizerYieldValue';

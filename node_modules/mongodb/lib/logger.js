@@ -26,6 +26,7 @@ exports.LoggerLevel = Object.freeze({
 });
 /**
  * @public
+ * @deprecated This logger is unused and will be removed in the next major version.
  */
 class Logger {
     /**

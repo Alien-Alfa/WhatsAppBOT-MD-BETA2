@@ -1,13 +1,13 @@
-export interface AnimeWall1 {
+export interface dataImageFormat1 {
     title: string;
     thumbnail: string;
     image: string;
 }
-export interface AnimeWall2 {
+export interface dataImageFormat2 {
     title: string;
     image: string;
 }
-export interface AnimeWall3 {
+export interface dataImageFormat3 {
     image: string;
 }
 export interface searchOpt {
