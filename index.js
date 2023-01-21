@@ -85,13 +85,12 @@ const PastebinAPI = require('pastebin-js'),
 
  
 
-let remsession = global.session
 if(global.session != false){
 
 //let pastbin = atob(`${remsession}`)
 
 		if (!fs.existsSync('./session.alfa.json')) {
-			MakeSession(remsession,'./session.alfa.json') }
+			MakeSession(global.session,'./session.alfa.json') }
 
         }
   setTimeout(() => {
@@ -146,7 +145,9 @@ add your own session file
 
 Change thw file name to "session.alfa.json" and put it in the main dir
 
-Enjoy!`)) }
+Enjoy!`)) 
+
+}
 
 // if(!fs.existsSync('./session.alfa.json')) {console.log(require('chalk').redBright('------------------------------------\n------------------------------------\n------------------------------------\n------------------------------------\n------------------------------------\n\n𝙋𝙧𝙤𝙘𝙚𝙨𝙨 𝙀𝙭𝙞𝙩𝙚𝙙: 𝙉𝙤 𝙖𝙪𝙩𝙝𝙁𝙞𝙡𝙚\n------------------------------------\n------------------------------------\n------------------------------------\n------------------------------------\n------------------------------------'));process.send('reset')}; 
 
