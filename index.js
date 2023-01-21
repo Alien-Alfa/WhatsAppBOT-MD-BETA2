@@ -89,10 +89,9 @@ if(global.session != false){
 
 //let pastbin = atob(`${remsession}`)
 
-		if (!fs.existsSync('./session.alfa.json')) {
-			MakeSession(global.session,'./session.alfa.json') }
-
-        }
+	//	if (!fs.existsSync('./session.alfa.json')) {
+			//MakeSession(global.session,'./session.alfa.json') }
+         }
   setTimeout(() => {
 var low
 try {

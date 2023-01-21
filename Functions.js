@@ -191,13 +191,7 @@ module.exports = AlienAlfa = async (AlienAlfa, m, chatUpdate, store) => {
         global.thum = await getBuffer(thumz)
         global.vidmenu = await getBuffer(vidmenuz)
 
-        var buttonxnxxr = [
-            { urlButton: { displayText: linkbuttid1, url: butturl1}},
-            { urlButton: { displayText: linkbuttid2, url: butturl2}},
-            { quickReplyButton: { displayText: 'All Menu', id: 'allmenu'}},
-            { quickReplyButton: { displayText: 'List Menu', id: 'command'}},
-            { quickReplyButton: { displayText: 'ping', id: 'ping'}}
-                ]
+       
 
 
 
@@ -1082,48 +1076,8 @@ const reactionMessage = {
 
                 //Font Selector 
 
-                let AlienAlfaThemeFont = global.menufont
+                let AlienAlfaThemeFont = 6
 
-    if(AlienAlfaThemeFont === '1') FontTrigger = AlfaFont1
-    if(AlienAlfaThemeFont === '2') FontTrigger = AlfaFont2
-    if(AlienAlfaThemeFont === '3') FontTrigger = AlfaFont3
-    if(AlienAlfaThemeFont === '4') FontTrigger = AlfaFont4
-    if(AlienAlfaThemeFont === '5') FontTrigger = AlfaFont5
-    if(AlienAlfaThemeFont === '6') FontTrigger = AlfaFont6
-    if(AlienAlfaThemeFont === '7') FontTrigger = AlfaFont7
-    if(AlienAlfaThemeFont === '8') FontTrigger = AlfaFont8
-    if(AlienAlfaThemeFont === '9') FontTrigger = AlfaFont9
-    if(AlienAlfaThemeFont === '10') FontTrigger = AlfaFont10
-    if(AlienAlfaThemeFont === '11') FontTrigger = AlfaFont11
-    if(AlienAlfaThemeFont === '12') FontTrigger = AlfaFont12
-    if(AlienAlfaThemeFont === '13') FontTrigger = AlfaFont13
-    if(AlienAlfaThemeFont === '14') FontTrigger = AlfaFont14
-    if(AlienAlfaThemeFont === '15') FontTrigger = AlfaFont15
-    if(AlienAlfaThemeFont === '16') FontTrigger = AlfaFont16
-    if(AlienAlfaThemeFont === '17') FontTrigger = AlfaFont17
-    if(AlienAlfaThemeFont === '18') FontTrigger = AlfaFont18
-    if(AlienAlfaThemeFont === '19') FontTrigger = AlfaFont19
-    if(AlienAlfaThemeFont === '20') FontTrigger = AlfaFont20
-    if(AlienAlfaThemeFont === '21') FontTrigger = AlfaFont21
-    if(AlienAlfaThemeFont === '22') FontTrigger = AlfaFont22
-    if(AlienAlfaThemeFont === '23') FontTrigger = AlfaFont23
-    if(AlienAlfaThemeFont === '24') FontTrigger = AlfaFont24
-    if(AlienAlfaThemeFont === '25') FontTrigger = AlfaFont25
-    if(AlienAlfaThemeFont === '26') FontTrigger = AlfaFont26
-    if(AlienAlfaThemeFont === '27') FontTrigger = AlfaFont27
-    if(AlienAlfaThemeFont === '28') FontTrigger = AlfaFont28
-    if(AlienAlfaThemeFont === '29') FontTrigger = AlfaFont29
-    if(AlienAlfaThemeFont === '30') FontTrigger = AlfaFont30
-    if(AlienAlfaThemeFont === '31') FontTrigger = AlfaFont31
-    if(AlienAlfaThemeFont === '32') FontTrigger = AlfaFont32
-    if(AlienAlfaThemeFont === '33') FontTrigger = AlfaFont33
-    if(AlienAlfaThemeFont === '34') FontTrigger = AlfaFont34
-    if(AlienAlfaThemeFont === '35') FontTrigger = AlfaFont35
-    if(AlienAlfaThemeFont === '36') FontTrigger = AlfaFont36
-    if(AlienAlfaThemeFont === '37') FontTrigger = AlfaFont37
-    if(AlienAlfaThemeFont === '38') FontTrigger = AlfaFont38
-    if(AlienAlfaThemeFont === '39') FontTrigger = AlfaFont39
-    else FontTrigger = AlfaFont6
     
     
     
@@ -1135,7 +1089,7 @@ const latensie = speed() - timestampe
 
 
 
-var textz = styletext(`
+var textz = `
 ╭═══〘 ${ownername} 〙═══⊷❍
 ┃✩╭──────────────
 ┃✩│
@@ -1161,8 +1115,8 @@ var textz = styletext(`
 ┃✩╰─────────────── 
 ╰═════════════════⊷
 
-`, parseInt(AlienAlfaThemeFont))
-var textz2 = styletext(`
+`
+var textz2 = `
 ╭═══〘 ${ownername} 〙═══⊷❍
 ┃✩╭──────────────
 ┃✩│ Owner Name : ${global.ownername}
@@ -1174,9 +1128,9 @@ var textz2 = styletext(`
 ┃✩╰─────────────── 
 ╰═════════════════⊷
 
-`, parseInt(AlienAlfaThemeFont))
-var menulist2 = FontTrigger(textz2)
-var menulist = FontTrigger(textz)
+`
+var menulist2 = textz2
+var menulist = textz
 
    
    //randoming function
@@ -10963,9 +10917,9 @@ replay('Choose on or off')
                 neww = performance.now()
                 oldd = performance.now()
                 respon = `
-Response Speed ${latensi.toFixed(4)} _Second_ \n ${oldd - neww} _miliseconds_\n\nRuntime : ${runtime(process.uptime())}
+Response Speed ${latensi.toFixed(4)} _Second_ \n ${oldd - neww} _miliseconds_\n\nRuntime : ${runtime(process.uptime())}`
 
-💻 Info Server
+let resp2 = `💻 Info Server
 RAM: ${formatp(os.totalmem() - os.freemem())} / ${formatp(os.totalmem())}
 
 _NodeJS Memory Usaage_
@@ -11147,12 +11101,12 @@ AlienAlfa.sendMessage(m.chat, buttonMessage, { quoted: m })
 
 case 'alive': {
     let uptime = runtime(process.uptime())
-    AlienAlfa.sendMessage(from, `Runtime : ${runtime(uptime)}`)
+    await reply(`Runtime : ${runtime(uptime)}`)
     }break
     
     
     case 'rs': case 'restart': {
-    AlienAlfa.sendMessage(from, '```Restarting...```')
+    AlienAlfa.sendMessage(from, {text: '```Restarting...```'})
     process.send(reset)
     }break
     
