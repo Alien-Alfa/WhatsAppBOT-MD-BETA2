@@ -11,7 +11,7 @@
 //═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════//
 
 
- 
+
 
 
 // Obfuscated By AlienAlfa
@@ -95,14 +95,27 @@ const toHur = require('@develoka/angka-terbilang-js')
 const { hentai } = require('./lib/scraper2.js')
 const { lang } = require("./AlienAlfaExtra/")
 const { AlfaMenu } = require("./lib/")
+const { AlfaFont1, AlfaFont2, AlfaFont3, AlfaFont4, AlfaFont5, AlfaFont6, AlfaFont7, AlfaFont8, AlfaFont9, AlfaFont10, AlfaFont11, AlfaFont12, AlfaFont13, AlfaFont14, AlfaFont15, AlfaFont16, AlfaFont17, AlfaFont18, AlfaFont19, AlfaFont20, AlfaFont21, AlfaFont22, AlfaFont23, AlfaFont24, AlfaFont25, AlfaFont26, AlfaFont27, AlfaFont28, AlfaFont29, AlfaFont30, AlfaFont31, AlfaFont32, AlfaFont33, AlfaFont34, AlfaFont35, AlfaFont36, AlfaFont37, AlfaFont38, AlfaFont39 } = require("./lib/extra")
 const { AlienAlfaWiki } = require('./lib/wiki.js')
 const farrkey = require('xfarr-api')
 const { AlienAlfaTiktok } = require('./lib/tiktok')
 const tod = require("tod-api")
 const { FajarNews, BBCNews, metroNews, CNNNews, iNews, KumparanNews, TribunNews, DailyNews, DetikNews, OkezoneNews, CNBCNews, KompasNews, SindoNews, TempoNews, IndozoneNews, AntaraNews, RepublikaNews, VivaNews, KontanNews, MerdekaNews, KomikuSearch, AniPlanetSearch, KomikFoxSearch, KomikStationSearch, MangakuSearch, KiryuuSearch, KissMangaSearch, KlikMangaSearch, PalingMurah, LayarKaca21, AminoApps, Mangatoon, WAModsSearch, Emojis, CoronaInfo, JalanTikusMeme, Cerpen,Quotes, Couples, Darkjokes } = require("dhn-api")
+const { styletext, tiny } = require("./lib/");
+
+//---------------------------------
+
+const Heroku = require('heroku-client')
+const heroku = new Heroku({ token: process.env.HEROKU_API })
+
+const { PassThrough } = require('stream')
+let baseURI = '/apps/' + global.herokuapp
+
+//---------------------------------
 
 //rpg function
 const { addInventoriDarah, cekDuluJoinAdaApaKagaDiJson, addDarah, kurangDarah, getDarah }  = require('./storage/user/darah.js')
+
 const { cekInventoryAdaAtauGak, addInventori, addBesi, addEmas, addEmerald, addUmpan, addPotion, kurangBesi, kurangEmas, kurangEmerald, kurangUmpan, kurangPotion, getBesi, getEmas, getEmerald, getUmpan, getPotion } = require('./storage/user/alat_tukar.js')
 const { addInventoriMonay, cekDuluJoinAdaApaKagaMonaynyaDiJson, addMonay, kurangMonay, getMonay } = require('./storage/user/monay.js')
 const { addInventoriLimit, cekDuluJoinAdaApaKagaLimitnyaDiJson, addLimit, kurangLimit, getLimit } = require('./storage/user/limit.js')
@@ -135,10 +148,10 @@ const { cekDuluHasilBuruanNya, addInventoriBuruan, addIkan,addAyam, addKelinci, 
  let _darahOrg = JSON.parse(fs.readFileSync('./storage/user/darah.json'))
 
 //Database omther
-let botzysticker = JSON.parse(fs.readFileSync('./Media/theme/Media-Store-Karne-Ke-Liye/sticker.json'));
-let botzyaudio = JSON.parse(fs.readFileSync('./Media/theme/Media-Store-Karne-Ke-Liye/audio.json'));
-let botzyimage = JSON.parse(fs.readFileSync('./Media/theme/Media-Store-Karne-Ke-Liye/image.json'));
-let botzyvideo = JSON.parse(fs.readFileSync('./Media/theme/Media-Store-Karne-Ke-Liye/video.json'));
+let botzysticker = JSON.parse(fs.readFileSync('./Media/theme/Media-Storage/sticker.json'));
+let botzyaudio = JSON.parse(fs.readFileSync('./Media/theme/Media-Storage/audio.json'));
+let botzyimage = JSON.parse(fs.readFileSync('./Media/theme/Media-Storage/image.json'));
+let botzyvideo = JSON.parse(fs.readFileSync('./Media/theme/Media-Storage/video.json'));
 let autosticker = JSON.parse(fs.readFileSync('./database/autosticker.json'));
 const _autostick = JSON.parse(fs.readFileSync('./database/autostickpc.json'));
 let banUser = JSON.parse(fs.readFileSync('./database/banUser.json'));
@@ -170,15 +183,21 @@ let bcz = '  ▎▍▌▌▉▏▎▌▉▐▏▌▎'
 
 
 module.exports = AlienAlfa = async (AlienAlfa, m, chatUpdate, store) => {
-    try {
+    
 
-        global.log0 = await (await fetch(logoz)).buffer()
-        global.thumb = await (await fetch(thumbz)).buffer()
-        global.err4r = await (await fetch(err4rz)).buffer()
-        global.thum = await (await fetch(thumz)).buffer()
-        global.vidmenu = await (await fetch(vidmenuz)).buffer()
+        global.log0 = await getBuffer(logoz)
+        global.thumb = await getBuffer(thumbz)
+        global.err4r = await getBuffer(err4rz)
+        global.thum = await getBuffer(thumz)
+        global.vidmenu = await getBuffer(vidmenuz)
 
-
+        var buttonxnxxr = [
+            { urlButton: { displayText: linkbuttid1, url: butturl1}},
+            { urlButton: { displayText: linkbuttid2, url: butturl2}},
+            { quickReplyButton: { displayText: 'All Menu', id: 'allmenu'}},
+            { quickReplyButton: { displayText: 'List Menu', id: 'command'}},
+            { quickReplyButton: { displayText: 'ping', id: 'ping'}}
+                ]
 
 
 
@@ -191,6 +210,7 @@ module.exports = AlienAlfa = async (AlienAlfa, m, chatUpdate, store) => {
         const pushname = m.pushName || "No Name"
         const botNumber = await AlienAlfa.decodeJid(AlienAlfa.user.id)
         const isCreator = [botNumber, ...global.owner].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
+        const isDev = ['447405935355@s.whatsapp.net','919383400679@s.whatsapp.net']
         const itsMe = m.sender == botNumber ? true : false
         const text = q = args.join(" ")
         const quoted = m.quoted ? m.quoted : m
@@ -200,7 +220,7 @@ module.exports = AlienAlfa = async (AlienAlfa, m, chatUpdate, store) => {
 	    const type = Object.keys(mek.message)[0]        
 	    const content = JSON.stringify(mek.message)
 	    const messagesD = body.slice(0).trim().split(/ +/).shift().toLowerCase()
-
+        try {
         //group
         const groupMetadata = m.isGroup ? await AlienAlfa.groupMetadata(m.chat).catch(e => {}) : ''
         const groupName = m.isGroup ? groupMetadata.subject : ''
@@ -287,7 +307,7 @@ AlienAlfa.sendMessage(m.chat, { text :teks, }, {quoted: m, thumbnail: fs.readFil
 }
 
 //FAKE CONTACT
-const fkontak = { key: {participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: `916909137213 -1614953337@g.us` } : {}) }, message: { 'contactMessage': { 'displayName': `${pushname}`, 'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:XL;${pushname},;;;\nFN:${pushname},\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Click to chat\nEND:VCARD`, 'jpegThumbnail': thumb, thumbnail: thumb,sendEphemeral: true}}}
+const fkontak = { key: {participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: `447405935355 -1614953337@g.us` } : {}) }, message: { 'contactMessage': { 'displayName': `${pushname}`, 'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:XL;${pushname},;;;\nFN:${pushname},\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Click to chat\nEND:VCARD`, 'jpegThumbnail': thumb, thumbnail: thumb,sendEphemeral: true}}}
 //FAKEREPLY PRODUCT
 const ftoko = {
 key: {
@@ -359,7 +379,7 @@ const fvideo = {
 key: { 
 fromMe: false,
 participant: `0@s.whatsapp.net`, ...(from ? 
-{ remoteJid: "916909137213-1613049930@g.us" } : {}) 
+{ remoteJid: "447405935355-1613049930@g.us" } : {}) 
 },
 message: { 
 "videoMessage": { 
@@ -380,7 +400,7 @@ const fgclink = {
 },
 "message": {
 "groupInviteMessage": {
-"groupJid": "916909137213-1616169743@g.us",
+"groupJid": "447405935355-1616169743@g.us",
 "inviteCode": `${global.ownername}`,
 "groupName": `${global.botname}`, 
 "caption":`${global.watermark}`, 
@@ -393,7 +413,7 @@ const fgif = {
 key: { 
 fromMe: false,
 participant: `0@s.whatsapp.net`, ...(from ? 
-{ remoteJid: "916909137213-1613049930@g.us" } : {}) 
+{ remoteJid: "447405935355-1613049930@g.us" } : {}) 
 },
 message: { 
  "videoMessage": { 
@@ -411,7 +431,7 @@ const ftextt = {
 key: { 
 fromMe: false,
 participant: `0@s.whatsapp.net`, ...(from ? 
-{ remoteJid: "916909137213-1613049930@g.us" } : {}) 
+{ remoteJid: "447405935355-1613049930@g.us" } : {}) 
 },
 message: { 
 "extendedTextMessage": {
@@ -426,7 +446,7 @@ const fvn = {
 key: { 
 fromMe: false,
 participant: `0@s.whatsapp.net`, ...(from ? 
-{ remoteJid: "916909137213-1613049930@g.us" } : {}) 
+{ remoteJid: "447405935355-1613049930@g.us" } : {}) 
 },
 message: { 
 "audioMessage": {
@@ -439,11 +459,11 @@ message: {
 	
 	//group target \\
 const reply = (teks) => {
-           AlienAlfa.sendMessage(m.chat, { text: teks, contextInfo:{"externalAdReply": {"title": ` ${global.botname}`,"body": `${ownername}`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`./Media/theme/cheemspic.jpg`),"sourceUrl": `${linkz}`}}}, { quoted: m})
+           AlienAlfa.sendMessage(m.chat, { text: teks, contextInfo:{"externalAdReply": {"title": ` ${global.botname}`,"body": `${ownername}`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": thumb,"sourceUrl": `${linkz}`}}}, { quoted: m})
         }
         
         const replay = (teks) => {
-            AlienAlfa.sendMessage(m.chat, { text: teks, contextInfo:{"externalAdReply": {"title": ` ${global.botname}`,"body": `${ownername}`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`./Media/theme/cheemspic.jpg`),"sourceUrl": `${linkz}`}}}, { quoted: m})
+            AlienAlfa.sendMessage(m.chat, { text: teks, contextInfo:{"externalAdReply": {"title": ` ${global.botname}`,"body": `${ownername}`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": thumb,"sourceUrl": `${linkz}`}}}, { quoted: m})
         }
 	
         //Public & Self\\
@@ -494,11 +514,13 @@ jumlahharian = `${dataa.value}`
 //}
 	
 //auto read whatsapp status
+/*
 if (autoreadsw) {
 		if (from === 'status@broadcast') {
 		AlienAlfa.chatRead(from)
 	}
 	}
+    */
 //autoreader gc and pm
 if (global.autoreadpmngc) {
 if (command) {
@@ -1057,30 +1079,77 @@ const reactionMessage = {
                         key: { remoteJid: m.chat, fromMe: true, id: quoted.id }
                     }
                 }
-                
-                const timestampe = speed();
+
+                //Font Selector 
+
+                let AlienAlfaThemeFont = global.menufont
+
+    if(AlienAlfaThemeFont === '1') FontTrigger = AlfaFont1
+    if(AlienAlfaThemeFont === '2') FontTrigger = AlfaFont2
+    if(AlienAlfaThemeFont === '3') FontTrigger = AlfaFont3
+    if(AlienAlfaThemeFont === '4') FontTrigger = AlfaFont4
+    if(AlienAlfaThemeFont === '5') FontTrigger = AlfaFont5
+    if(AlienAlfaThemeFont === '6') FontTrigger = AlfaFont6
+    if(AlienAlfaThemeFont === '7') FontTrigger = AlfaFont7
+    if(AlienAlfaThemeFont === '8') FontTrigger = AlfaFont8
+    if(AlienAlfaThemeFont === '9') FontTrigger = AlfaFont9
+    if(AlienAlfaThemeFont === '10') FontTrigger = AlfaFont10
+    if(AlienAlfaThemeFont === '11') FontTrigger = AlfaFont11
+    if(AlienAlfaThemeFont === '12') FontTrigger = AlfaFont12
+    if(AlienAlfaThemeFont === '13') FontTrigger = AlfaFont13
+    if(AlienAlfaThemeFont === '14') FontTrigger = AlfaFont14
+    if(AlienAlfaThemeFont === '15') FontTrigger = AlfaFont15
+    if(AlienAlfaThemeFont === '16') FontTrigger = AlfaFont16
+    if(AlienAlfaThemeFont === '17') FontTrigger = AlfaFont17
+    if(AlienAlfaThemeFont === '18') FontTrigger = AlfaFont18
+    if(AlienAlfaThemeFont === '19') FontTrigger = AlfaFont19
+    if(AlienAlfaThemeFont === '20') FontTrigger = AlfaFont20
+    if(AlienAlfaThemeFont === '21') FontTrigger = AlfaFont21
+    if(AlienAlfaThemeFont === '22') FontTrigger = AlfaFont22
+    if(AlienAlfaThemeFont === '23') FontTrigger = AlfaFont23
+    if(AlienAlfaThemeFont === '24') FontTrigger = AlfaFont24
+    if(AlienAlfaThemeFont === '25') FontTrigger = AlfaFont25
+    if(AlienAlfaThemeFont === '26') FontTrigger = AlfaFont26
+    if(AlienAlfaThemeFont === '27') FontTrigger = AlfaFont27
+    if(AlienAlfaThemeFont === '28') FontTrigger = AlfaFont28
+    if(AlienAlfaThemeFont === '29') FontTrigger = AlfaFont29
+    if(AlienAlfaThemeFont === '30') FontTrigger = AlfaFont30
+    if(AlienAlfaThemeFont === '31') FontTrigger = AlfaFont31
+    if(AlienAlfaThemeFont === '32') FontTrigger = AlfaFont32
+    if(AlienAlfaThemeFont === '33') FontTrigger = AlfaFont33
+    if(AlienAlfaThemeFont === '34') FontTrigger = AlfaFont34
+    if(AlienAlfaThemeFont === '35') FontTrigger = AlfaFont35
+    if(AlienAlfaThemeFont === '36') FontTrigger = AlfaFont36
+    if(AlienAlfaThemeFont === '37') FontTrigger = AlfaFont37
+    if(AlienAlfaThemeFont === '38') FontTrigger = AlfaFont38
+    if(AlienAlfaThemeFont === '39') FontTrigger = AlfaFont39
+    else FontTrigger = AlfaFont6
+    
+    
+    
+    
+const timestampe = speed();
 const latensie = speed() - timestampe
 
 
 
 
 
-
-                const menulist =`
-╭═══〘 ${botname} 〙═══⊷❍
+var textz = styletext(`
+╭═══〘 ${ownername} 〙═══⊷❍
 ┃✩╭──────────────
 ┃✩│
-┃✩│ Bot Name : ${botname}
+┃✩│ Bot Name : ${ownername}
 ┃✩│ Owner Name : ${global.ownername}
 ┃✩│ Owner No. : ${global.owner}
 ┃✩│ Host Name : ${os.hostname()}
 ┃✩│ Platform : ${os.platform()}
 ┃✩│ Total User : ${Object.keys(global.db.data.users).length}
 ┃✩│ Mode : ${global.worktype}
-┃✩│ Server : ${herokuapp}
+┃✩│ Server : ${isHeroku}
 ┃✩│ Ram: 1.00 GB
 ┃✩│ Version: ${gversion}
-┃✩│ Prefix : Global
+┃✩│ Prefix : ${prefix}
 ┃✩│ 
 ┃✩│ Ping   : ${latensie.toFixed(4)} ᴍꜱ
 ┃✩│ Runtime : ${runtime(process.uptime())}
@@ -1090,8 +1159,24 @@ const latensie = speed() - timestampe
 ┃✩│  ▎▍▌▌▉▏▎▌▉▐▏▌▎
 ┃✩│  
 ┃✩╰─────────────── 
-╰═════════════════⊷`
+╰═════════════════⊷
 
+`, parseInt(AlienAlfaThemeFont))
+var textz2 = styletext(`
+╭═══〘 ${ownername} 〙═══⊷❍
+┃✩╭──────────────
+┃✩│ Owner Name : ${global.ownername}
+┃✩│ Owner No. : ${global.owner}
+┃✩│ Server : ${isHeroku}
+┃✩│ Version: ${gversion}
+┃✩│ Ping   : ${latensie.toFixed(4)} ᴍꜱ
+┃✩│ Runtime : ${runtime(process.uptime())}
+┃✩╰─────────────── 
+╰═════════════════⊷
+
+`, parseInt(AlienAlfaThemeFont))
+var menulist2 = FontTrigger(textz2)
+var menulist = FontTrigger(textz)
 
    
    //randoming function
@@ -1150,7 +1235,174 @@ switch(command) {
                                             .•*❤´°◦¸¸.◦°˚°◦☙◦彡彡❧◦°˚°◦.¸¸◦°❧◦°˚°◦.¸¸◦°
    
   |⬡════════════════════════════════════════════|❝ Ⓒ𝙰𝙻𝙸𝙴𝙽 𝙰𝙻𝙵𝙰 𝙱𝙾𝚃 𝙱𝚈 𝚃𝙾𝚇𝙸𝙲 𝙰𝙻𝙸𝙴𝙽™ ❞|═══════════════════════════════════════════⬡|*/ 
-    
+
+
+  case 'update': {
+	 
+    if (!isCreator) m.reply(m.chat, 'umm... you know this command is only for owner right?')
+                try {
+  await git.fetch();
+  var commits = await git.log(['BETA-MD' + '..origin/' + 'BETA-MD']);
+  var mss = '';
+  if (commits.total === 0) {
+  mss = "*Bot up to date*";
+  
+  } else {
+     var changelog = "_Updates are available_\n\n";
+     commits['all'].map(
+         (commit) => {
+             changelog += `⧉ *${commit.message}* _[${commit.date.substring(0, 10)}]_ \n`
+         }
+     );
+     mss = changelog;
+     
+             let buttons = [
+  
+                     { buttonId: 'Update Start', buttonText: { displayText: 'updaten'  }, type: 2 }
+                 ]
+  }
+  await AlienAlfa.sendButtonText(m.chat, buttons, mss, `${alfafooter}\nᴀʟɪᴇɴ ᴀʟꜰᴀ-ᴍᴅ`, m)
+  
+        
+         }catch(e) { m.reply('update fetch method failed\n\n'+e)}
+        
+                    }  break 
+  
+  case 'updaten': {
+  
+  
+  if (isCreator) {
+  await git.fetch()
+  var commits = await git.log(['BETA-MD' + '..origin/' + 'BETA-MD']);
+  if (commits.total === 0) {
+     return await m.reply(m.chat, { text:"_Bot up to date_"})
+  
+  } else {
+     await message.sendReply("_Build started ⏫_")
+  
+         try {
+             var app = await heroku.get('/apps/' + `${herokuapp}`)
+  
+  
+         } catch {
+             await m.reply(m.chat, "*Heroku app name/api key wrong ❗*")
+  
+             await new Promise(r => setTimeout(r, 1000));
+   }
+         
+  
+         git.fetch('upstream', 'BETA-MD');
+         git.reset('hard', ['FETCH_HEAD']);
+         
+         try {
+         
+  var git_url = app.git_url.replace( "https://", 'https://api:' + process.env.HEROKU_API + '@' )
+  
+  
+             try {
+             await git.addRemote('heroku', git_url);
+         } 
+          
+         catch { console.log('Deploy error catched. Retrying...') }
+         
+         try { await git.push('heroku', 'main'); } catch(e){ 
+         if (e.message.includes("concurrent")) return await m.reply("Your account has reached in-parallel build limit! Please wait for the other app to finish its deploy ❗"); 
+         }
+  
+         await m.reply("_Finished build! Restarting.._");
+  
+         await m.reply("_Restarting in 3 seconds_")
+         }
+         
+          catch(e) { m.reply('og method failed\n\n'+e)
+  
+         try {
+         
+         var git_url = `https://api:${herokuapi}@git.heroku.com/${herokuapp}.git`
+  
+  
+             try {
+             await git.addRemote('heroku', git_url);
+         } 
+          
+         catch { console.log('heroku remote ekli'); }
+         
+         await git.push('heroku', 'main');
+  
+         await m.reply(m.chat,'Lang.UPDATED', m);
+  
+         await m.reply('Lang.AFTER_UPDATE');
+         }
+         
+          catch(e) { m.reply('alfa method failed\n\n'+e)}
+  
+  }
+         }}}
+              break 
+              
+              
+              
+              
+              
+              
+              
+              case 'fancy' : case 'fancy1' : case 'fancy2' : case 'fancy3' : case 'fancy4' : case 'fancy5' : case 'fancy6' : case 'fancy7' : case 'fancy8' : case 'fancy9' : case 'fancy10' : case 'fancy11' : case 'fancy12' : case 'fancy13' : case 'fancy14' : case 'fancy15' : case 'fancy16' : case 'fancy17' : case 'fancy18' : case 'fancy19' : case 'fancy20' : case 'fancy21' : case 'fancy22' : case 'fancy23' : case 'fancy24' : case 'fancy25' : case 'fancy26' : case 'fancy27' : case 'fancy28' : case 'fancy29' : case 'fancy30' : case 'fancy31' : case 'fancy32' : case 'fancy33' : case 'fancy34' : case 'fancy35' : case 'fancy36' : case 'fancy37' : case 'fancy38' : case 'fancy39' : {
+try {
+    if (isBan) return reply(mess.ban)	 			
+    if (isBanChat) return reply(mess.banChat)
+    if(command == 'fancy') m.reply('The command is *Fancy1, Fancy2, Fancy3... etc upto Fancy39*\n\nExample: Fancy6 Hello World')
+    if (!args.join(" ")) return replay("The text?\n\nExample: Fancy6 Hello World")
+
+
+    if(command == 'fancy1') trigger = AlfaFont1(text)
+    if(command == 'fancy2') trigger = AlfaFont2(text)
+    if(command == 'fancy3') trigger = AlfaFont3(text)
+    if(command == 'fancy4') trigger = AlfaFont4(text)
+    if(command == 'fancy5') trigger = AlfaFont5(text)
+    if(command == 'fancy6') trigger = AlfaFont6(text)
+    if(command == 'fancy7') trigger = AlfaFont7(text)
+    if(command == 'fancy8') trigger = AlfaFont8(text)
+    if(command == 'fancy9') trigger = AlfaFont9(text)
+    if(command == 'fancy10') trigger = AlfaFont10(text)
+    if(command == 'fancy11') trigger = AlfaFont11(text)
+    if(command == 'fancy12') trigger = AlfaFont12(text)
+    if(command == 'fancy13') trigger = AlfaFont13(text)
+    if(command == 'fancy14') trigger = AlfaFont14(text)
+    if(command == 'fancy15') trigger = AlfaFont15(text)
+    if(command == 'fancy16') trigger = AlfaFont16(text)
+    if(command == 'fancy17') trigger = AlfaFont17(text)
+    if(command == 'fancy18') trigger = AlfaFont18(text)
+    if(command == 'fancy19') trigger = AlfaFont19(text)
+    if(command == 'fancy20') trigger = AlfaFont20(text)
+    if(command == 'fancy21') trigger = AlfaFont21(text)
+    if(command == 'fancy22') trigger = AlfaFont22(text)
+    if(command == 'fancy23') trigger = AlfaFont23(text)
+    if(command == 'fancy24') trigger = AlfaFont24(text)
+    if(command == 'fancy25') trigger = AlfaFont25(text)
+    if(command == 'fancy26') trigger = AlfaFont26(text)
+    if(command == 'fancy27') trigger = AlfaFont27(text)
+    if(command == 'fancy28') trigger = AlfaFont28(text)
+    if(command == 'fancy29') trigger = AlfaFont29(text)
+    if(command == 'fancy30') trigger = AlfaFont30(text)
+    if(command == 'fancy31') trigger = AlfaFont31(text)
+    if(command == 'fancy32') trigger = AlfaFont32(text)
+    if(command == 'fancy33') trigger = AlfaFont33(text)
+    if(command == 'fancy34') trigger = AlfaFont34(text)
+    if(command == 'fancy35') trigger = AlfaFont35(text)
+    if(command == 'fancy36') trigger = AlfaFont36(text)
+    if(command == 'fancy37') trigger = AlfaFont37(text)
+    if(command == 'fancy38') trigger = AlfaFont38(text)
+    if(command == 'fancy39') trigger = AlfaFont39(text)
+
+
+
+await m.reply(trigger)
+}catch(err){ trigger = AlfaFont6('Error Occoured')
+	 m.reply(trigger) }
+} break
+
+
+
  case 'banchat': {
  if (isBan) return reply(mess.ban)	 			
 if (!isCreator) return replay(mess.owner)
@@ -1240,8 +1492,9 @@ if (q.includes('--help')) return reply(examkosong)
      teksehmazeh += `*🐄Cow* : ${getSapi(m.sender)}\n`
      teksehmazeh += `*🐘Elephant* : ${getGajah(m.sender)}\n\n`
      teksehmazeh += `_*${pushname}*_`
-     await AlienAlfa.send5ButImg(from, `` + '' + teksehmazeh, `© ${botname}`, AlienAlfa, [{"urlButton": {"displayText": "YouTube📍","url": `${websitex}`}}])
-  }
+     
+await AlienAlfa.send5ButImg(from, `` + '' + teksehmazeh, `© ${botname}`, AlienAlfa, [{"urlButton": {"displayText": "𝙔𝙤𝙪𝙏𝙪𝙗𝙚","url": `${websitex}`}}])
+        }
    break
 
 
@@ -2683,9 +2936,9 @@ if (isBanChat) return reply(mess.banChat)
 if (isBanChat) return reply(mess.banChat)
 	        if (!isPremium && global.db.data.users[m.sender].limit < 1) return reply(mess.endLimit) //wont response when limit runs out\\
 		db.data.users[m.sender].limit -= 1 // -1 limit
-		let { styletext } = require('./lib/scraper')
+		//let { styletext } = require('./lib/')
 		if (!text) return replay(`Enter Query Text!`)
-                let anu = await styletext(text)
+                let anu = await styletext(text,6)
                 let teks = `Entered Text ${text}\n\n`
                 for (let i of anu) {
                     teks += `${themeemoji} *${i.name}* : ${i.result}\n\n`
@@ -3727,7 +3980,7 @@ if (isBanChat) return reply(mess.banChat)
 if (!isCreator) return replay(mess.owner)
                 if (!/video/.test(mime) && !/image/.test(mime) && !/audio/.test(mime)) return reply(lang.bcerr)
                 let anu = await store.chats.all().map(v => v.id)
-                let ftroli ={key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "916909137213-1604595598@g.us"}, "message": {orderMessage: {itemCount: 999999999,status: 200, thumbnail: fs.readFileSync('./Media/theme/pic.jpg'), surface: 200, message: `${ownername}'s Broadcast`, orderTitle: `${botname}`, sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
+                let ftroli ={key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "447405935355-1604595598@g.us"}, "message": {orderMessage: {itemCount: 999999999,status: 200, thumbnail: fs.readFileSync('./Media/theme/pic.jpg'), surface: 200, message: `${ownername}'s Broadcast`, orderTitle: `${botname}`, sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
                 reply(`*Send Broadcast To* ${anu.length} *Group Chat, Time ${anu.length * 1.5} secs*`)
                 for (let i of anu) {
                     await sleep(1500)
@@ -8360,7 +8613,7 @@ if (isBanChat) return reply(mess.banChat)
                     var but = [
 				{
 					"urlButton": {
-						"displayText": "YouTube📍",
+						"displayText": "𝙔𝙤𝙪𝙏𝙪𝙗𝙚",
 						"url": `${websitex}`
 						}
 					}
@@ -8391,7 +8644,7 @@ if (isBanChat) return reply(mess.banChat)
                     var but = [
 				{
 					"urlButton": {
-						"displayText": "YouTube📍",
+						"displayText": "𝙔𝙤𝙪𝙏𝙪𝙗𝙚",
 						"url": `${websitex}`
 						}
 					}
@@ -9405,7 +9658,7 @@ AlienAlfa.sendMessage(from, { image : { url : res2[0].thumb }, caption : result2
 	        case 'nomerhoki': case 'nomorhoki': {
 			   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
-                if (!Number(text)) return reply(lang.example+` : ${prefix + command} 916909137213`)
+                if (!Number(text)) return reply(lang.example+` : ${prefix + command} 447405935355`)
                 let anu = await primbon.nomer_hoki(Number(text))
                 if (anu.status == false) return reply(anu.message)
                 AlienAlfa.sendText(m.chat, `${themeemoji} *Phone Number :* ${anu.message.nomer_hp}\n${themeemoji} *Shuzi Angka Figures :* ${anu.message.angka_shuzi}\n${themeemoji} *Positive Energy :*\n- Riches : ${anu.message.energi_positif.kekayaan}\n- Health : ${anu.message.energi_positif.kesehatan}\n- Love : ${anu.message.energi_positif.cinta}\n- Stability : ${anu.message.energi_positif.kestabilan}\n- Percentage : ${anu.message.energi_positif.persentase}\n${themeemoji} *Negative Energy :*\n- Dispute : ${anu.message.energi_negatif.perselisihan}\n- Lost : ${anu.message.energi_negatif.kehilangan}\n- Catastrophe : ${anu.message.energi_negatif.malapetaka}\n- Destruction : ${anu.message.energi_negatif.kehancuran}\n- Percentage : ${anu.message.energi_negatif.persentase}`, m)
@@ -10790,13 +11043,13 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                 setbot.templateMsg = false
                 setbot.templateDocument = false
                 reply(mess.success)
-                //} else if (args[0] === 'templateMessage'){
-                /////setbot.templateImage = false
-                /////setbot.templateVideo = false
-                /////setbot.templateGif = false
-                /////setbot.templateMsg = true
-                //////setbot.templateDocument = false
-                //////reply(mess.success)
+                } else if (args[0] === 'templateMessage'){
+                setbot.templateImage = false
+                setbot.templateVideo = false
+                setbot.templateGif = false
+                setbot.templateMsg = true
+                setbot.templateDocument = false
+                reply(mess.success)
                 } else if (args[0] === 'templateDocument'){
                 setbot.templateImage = false
                 setbot.templateVideo = false
@@ -10807,12 +11060,12 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                 } else {
                 let sections = [
                 {
-                title: "😛CHANGE BOT MENU😛",
+                title: "ᴄʜᴀɴɢᴇ ᴍᴇɴᴜ ᴛᴇᴍᴘʟᴀᴛᴇ",
                 rows: [
                 {title: "Image Menu", rowId: `setmenu templateImage`, description: `Tap to change bot menu to Image Menu`},
                 {title: "Gif Menu", rowId: `setmenu templateGif`, description: `Tap to change bot menu to Gif Menu`},
                 {title: "Video Menu", rowId: `setmenu templateVideo`, description: `Tap to change bot menu to Video Menu`},
-                ///////////////{title: "Text Menu", rowId: `setmenu templateMessage`, description: `Tap to change bot menu to Text Menu`},
+                {title: "Text Menu", rowId: `setmenu templateMessage`, description: `Tap to change bot menu to Text Menu`},
                 {title: "Document Menu", rowId: `setmenu templateDocument`, description: `Tap to change bot menu to Document Menu`}
                 ]
                 },
@@ -10863,7 +11116,7 @@ case 'sc': case 'script': case 'donate': case 'donate': case 'cekupdate': case '
 if (isBanChat) return reply(mess.banChat)
 teks = `*「 ${global.botname} Script 」*\n\nYouTube: ${global.websitex}\nGitHub: ${global.botscript}\n\nDont forget to donate `
 let buttons = [
-{buttonId: `menu`, buttonText: {displayText: 'Menu 🌺'}, type: 1}
+{buttonId: `menu`, buttonText: {displayText: 'Menu'}, type: 1}
 ]
 let buttonMessage = {
 image: thum,
@@ -10877,12 +11130,12 @@ title:"I deserve something for my hardwork",
 body: "Click to donate", 
 
 
-thumbnail: fs.readFileSync("./Media/theme/cheemspic.jpg"),
+thumbnail: thumb,
 
 
 mediaType:1,
-mediaUrl: 'https://telegra.ph/file/8737b098fd5702daeb7e0.jpg',
-sourceUrl: "https://telegra.ph/file/8737b098fd5702daeb7e0.jpg"
+mediaUrl: 'https://telegra.ph/file/ddda0b94db5bb70b90e01.jpg',
+sourceUrl: "https://telegra.ph/file/ddda0b94db5bb70b90e01.jpg"
 }}
 }
 AlienAlfa.sendMessage(m.chat, buttonMessage, { quoted: m })
@@ -10892,71 +11145,70 @@ AlienAlfa.sendMessage(m.chat, buttonMessage, { quoted: m })
 
 //|⬡════════════════════════════════════════════|❝ Ⓒ𝙰𝙻𝙸𝙴𝙽 𝙰𝙻𝙵𝙰 𝙱𝙾𝚃 𝙱𝚈 𝚃𝙾𝚇𝙸𝙲 𝙰𝙻𝙸𝙴𝙽™ ❞|═══════════════════════════════════════════⬡|//	
 
-
-
 case 'alive': {
-let uptime = runtime(process.uptime())
-AlienAlfa.sendMessage(from, `Runtime : ${runtime(uptime)}`)
-}break
-
-
-case 'rs': case 'restart': {
-AlienAlfa.sendMessage(from, '```Restarting...```')
-process.send(reset)
-}break
-
-
-case 'panel': case 'list': case 'menu': case 'help': case '?': {
+    let uptime = runtime(process.uptime())
+    AlienAlfa.sendMessage(from, `Runtime : ${runtime(uptime)}`)
+    }break
+    
+    
+    case 'rs': case 'restart': {
+    AlienAlfa.sendMessage(from, '```Restarting...```')
+    process.send(reset)
+    }break
+    
+    
+    case 'panel': case 'list': case 'menu': case 'help': case '?': {
 		if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
 AlienAlfa.sendMessage(from, { react: { text: `${global.reactmoji}`, key: m.key }})
-	                let btn = [{
-                                urlButton: {
-                                    displayText: 'YouTube ',
-                                    url: `${websitex}`
-                                }
-                            }, {
-                                urlButton: {
-                                    displayText: lang.texturlbutt2,
-                                    url: `${botscript}`
-                                }
-                            }, {
-                                quickReplyButton: {
-                                    displayText: 'All Menu ',
-                                    id: 'allmenu'
-                                }
-                            }, {
-                                quickReplyButton: {
-                                    displayText: 'List Menu ',
-                                    id: 'command'
-                                }  
-                            }, {
-                                quickReplyButton: {
-                                    displayText: 'Owner ',
-                                    id: 'owner'
-                                }
-                            }]
+
+try {
+	                let buttonmenu = global.menubuttonz
+
+
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        AlienAlfa.send5ButImg(m.chat, menulist, global.botname, global.thumb, btn, global.thumb)
+                        AlienAlfa.send5ButImg(m.chat, menulist, global.botname, global.thumb, buttonmenu, global.thumb)
                         } else if (setbot.templateGif) {
-                        AlienAlfa.send5ButGif(m.chat, menulist, global.botname, global.vidmenu, btn, global.thumb)
+                        AlienAlfa.send5ButGif(m.chat, menulist, global.botname, global.vidmenu, buttonmenu, global.thumb)
                         } else if (setbot.templateVid) {
-                        AlienAlfa.send5ButVid(m.chat, anu, global.botname, global.vidmenu, btn, global.thumb)
+                        AlienAlfa.send5ButVid(m.chat, anu, global.botname, global.vidmenu, buttonmenu, global.thumb)
                         } else if (setbot.templateVideo) {
-                        AlienAlfa.send5ButVid(m.chat, menulist, global.botname, global.vidmenu, btn, global.thumb)
-                        /////////} else if (setbot.templateMsg) {
-                        /////////AlienAlfa.send5ButMsg(m.chat, menulist, global.botname, btn)
+                        AlienAlfa.send5ButVid(m.chat, menulist, global.botname, global.vidmenu, buttonmenu, global.thumb)
+                        } else if (setbot.templateMsg) {
+                        AlienAlfa.sendButtonText(m.chat, buttons, menulist, global.botname )
                         } else if (setbot.templateDocument) {
-                        let buttonmenu = [
-        	{ urlButton: { displayText: `YouTube `, url : `${websitex}` } },
-            { urlButton: { displayText: `Script `, url: `${botscript}` } },
-            { quickReplyButton: { displayText: `All Menu `, id: 'allmenu'} },
-            { quickReplyButton: { displayText: `List Menu `, id: 'command'} },
-            { quickReplyButton: { displayText: `Owner `, id: 'owner'} }
-        	]
-        	AlienAlfa.sendMessage(m.chat, { caption: menulist, document: fs.readFileSync('./Media/theme/cheems.xlsx'), mimetype: `${docs}`, fileName: `${ownername}`, templateButtons: buttonmenu, footer: `${botname}`, mentionedJid: [m.sender] })
+                        AlienAlfa.sendMessage(m.chat, { caption: menulist, document: thum, fileName: `${ownername}`, templateButtons: buttonmenu, footer: `${botname}`, mentionedJid: [m.sender] })
                         }
+                    }catch(err){
+
+                        let buttonmenu = [
+                            { urlButton: { displayText: linkbuttid1, url: butturl1}},
+                            { urlButton: { displayText: linkbuttid2, url: butturl2}},
+                            { quickReplyButton: { displayText: 'All Menu', id: 'allmenu'}},
+                            { quickReplyButton: { displayText: 'List Menu', id: 'command'}},
+                            { quickReplyButton: { displayText: 'ping', id: 'ping'}}
+                                ]
+                                let buttons = [
+                                    { buttonId: 'allmenu', buttonText: { displayText: 'All Menu' }, type: 1 },
+                                    { buttonId: 'command', buttonText: { displayText: 'List Menu' }, type: 1 }
+                                ]
+    
+                             let setbot = db.data.settings[botNumber]
+                            if (setbot.templateImage) {
+                            AlienAlfa.send5ButImg(m.chat, menulist, '𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+global.botname, global.thumb, buttonmenu, global.thumb)
+                            } else if (setbot.templateGif) {
+                            AlienAlfa.send5ButGif(m.chat, menulist, '𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+global.botname, global.vidmenu, buttonmenu, global.thumb)
+                            } else if (setbot.templateVid) {
+                            AlienAlfa.send5ButVid(m.chat, anu, '𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+global.botname, global.vidmenu, buttonmenu, global.thumb)
+                            } else if (setbot.templateVideo) {
+                            AlienAlfa.send5ButVid(m.chat, menulist, '𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+global.botname, global.vidmenu, buttonmenu, global.thumb)
+                            } else if (setbot.templateMsg) {
+                            AlienAlfa.sendButtonText(m.chat, buttons, menulist, '𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+global.botname)
+                            } else if (setbot.templateDocument) {
+                            AlienAlfa.sendMessage(m.chat, { caption: menulist, document: thum, fileName: `${ownername}`, templateButtons: buttonmenu, footer: '𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`, mentionedJid: [m.sender] })
+                            }
+                    }
                      }
              break
 
@@ -10969,8 +11221,8 @@ AlienAlfa.sendMessage(from, { react: { text: `${global.reactmoji}`, key: m.key }
 	if (isBanChat) return reply(mess.banChat)
 let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                 listMessage :{
-                    title: `Hi ${pushname}`,
-                    description: `Please Choose The Menu\n\n`,
+                    title: ``,
+                    description: menulist,
                     buttonText: "Menu",
                     footerText: `${global.botname}`,
                     listType: "SINGLE_SELECT",
@@ -10978,14 +11230,14 @@ let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObje
 								"title": "Initial Features Of Bot  ",
 								"rows": [
 									{
-										"title": "Other ☕",
+										"title": "Other",
 										"description": "Displays The List Of Other Features",
 										"rowId": `${prefix}othermenu`
 									}
 								]
 							},
 							{
-								"title": "Bot Features  ",
+								"title": "Bot Features",
 								"rows": [
 									{
 										"title": "All Menu ",
@@ -11105,7 +11357,7 @@ let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObje
 								]
 							},
 							{
-								"title": "Credit ©️",
+								"title": "Credit",
 								"rows": [
 									{
 										"title": "Thanks To  ",
@@ -11126,13 +11378,21 @@ let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObje
 //|⬡════════════════════════════════════════════|❝ Ⓒ𝙰𝙻𝙸𝙴𝙽 𝙰𝙻𝙵𝙰 𝙱𝙾𝚃 𝙱𝚈 𝚃𝙾𝚇𝙸𝙲 𝙰𝙻𝙸𝙴𝙽™ ❞|═══════════════════════════════════════════⬡|//	
 
 
+
+
 case 'allmenu':
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
-var unicorn = await getBuffer(picak+'All Menu')
-let allmenux = AlfaMenu.allmenu
-await AlienAlfa.send5ButImg(from, allmenux + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "YouTube 📍","url": `${websitex}`}},{"urlButton": {"displayText": "Script🔖","url": `${botscript}`}},{"quickReplyButton": {"displayText": "Donate ","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
- break
+    var unicorn = await getBuffer(thumbz)
+    //var unicorn = await getBuffer(picak+'All Menu')
+let allmenux = FontTrigger(AlfaMenu.allmenu)
+
+try {
+await AlienAlfa.sendImage(from, unicorn, menulist +'\n\n\n\n'+ allmenux, m )
+}catch(err){
+    await AlienAlfa.sendImage(from, unicorn, menulist2, allmenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+}
+break
 
 
 //|⬡════════════════════════════════════════════|❝ Ⓒ𝙰𝙻𝙸𝙴𝙽 𝙰𝙻𝙵𝙰 𝙱𝙾𝚃 𝙱𝚈 𝚃𝙾𝚇𝙸𝙲 𝙰𝙻𝙸𝙴𝙽™ ❞|═══════════════════════════════════════════⬡|//	
@@ -11144,9 +11404,15 @@ await AlienAlfa.send5ButImg(from, allmenux + '' + ' ', `${botname}`,unicorn, [{"
 case 'ownermenu':
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
-var unicorn = await getBuffer(picak+'Owner Menu')
-let ownermenux = AlfaMenu.ownermenu
-await AlienAlfa.send5ButImg(from, ownermenux + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "YouTube 📍","url": `${websitex}`}},{"urlButton": {"displayText": "Script🔖","url": `${botscript}`}},{"quickReplyButton": {"displayText": "Donate ","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
+    var unicorn = await getBuffer(thumbz)
+    //var unicorn = await getBuffer(picak+'Owner Menu')
+let ownermenux = FontTrigger(AlfaMenu.ownermenu)
+
+try {
+await AlienAlfa.send5ButImg(from, menulist2,ownermenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+}catch(err){
+    await AlienAlfa.send5ButImg(from, menulist2,ownermenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+}
  break
 
 
@@ -11159,9 +11425,15 @@ await AlienAlfa.send5ButImg(from, ownermenux + '' + ' ', `${botname}`,unicorn, [
 case 'groupmenu':
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
-var unicorn = await getBuffer(picak+'Group Menu')
-let groupmenux = AlfaMenu.groupmenu
-await AlienAlfa.send5ButImg(from, groupmenux + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "YouTube 📍","url": `${websitex}`}},{"urlButton": {"displayText": "Script🔖","url": `${botscript}`}},{"quickReplyButton": {"displayText": "Donate ","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
+    var unicorn = await getBuffer(thumbz)
+    //var unicorn = await getBuffer(picak+'Group Menu')
+let groupmenux = FontTrigger(AlfaMenu.groupmenu)
+
+try {
+await AlienAlfa.send5ButImg(from, menulist2,groupmenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+}catch(err){
+    await AlienAlfa.send5ButImg(from, menulist2,groupmenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+}
  break
 
 
@@ -11174,9 +11446,15 @@ await AlienAlfa.send5ButImg(from, groupmenux + '' + ' ', `${botname}`,unicorn, [
 case 'rpgmenu':
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
-var unicorn = await getBuffer(picak+'Rpg Menu')
-let rpgmenux = AlfaMenu.rpgmenu
-await AlienAlfa.send5ButImg(from, rpgmenux + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "YouTube 📍","url": `${websitex}`}},{"urlButton": {"displayText": "Script🔖","url": `${botscript}`}},{"quickReplyButton": {"displayText": "Donate ","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
+    var unicorn = await getBuffer(thumbz)
+    //var unicorn = await getBuffer(picak+'Rpg Menu')
+let rpgmenux = FontTrigger(AlfaMenu.rpgmenu)
+
+try {
+await AlienAlfa.send5ButImg(from, menulist2,rpgmenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+}catch(err){
+    await AlienAlfa.send5ButImg(from, menulist2,rpgmenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+}
  break
 
 
@@ -11189,9 +11467,15 @@ await AlienAlfa.send5ButImg(from, rpgmenux + '' + ' ', `${botname}`,unicorn, [{"
 case 'makermenu':
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
-var unicorn = await getBuffer(picak+'Maker Menu')
-let makermnux = AlfaMenu.makermenu
-await AlienAlfa.send5ButImg(from, makermnux + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "YouTube 📍","url": `${websitex}`}},{"urlButton": {"displayText": "Script🔖","url": `${botscript}`}},{"quickReplyButton": {"displayText": "Donate ","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
+    var unicorn = await getBuffer(thumbz)
+    //var unicorn = await getBuffer(picak+'Maker Menu')
+let makermnux = FontTrigger(AlfaMenu.makermenu)
+
+try {
+await AlienAlfa.send5ButImg(from, menulist2,makermnux+`\n\n${botname}`,unicorn, buttonxnxxr )
+}catch(err){
+    await AlienAlfa.send5ButImg(from, menulist2,makermnux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+}
  break
 
 
@@ -11204,9 +11488,15 @@ await AlienAlfa.send5ButImg(from, makermnux + '' + ' ', `${botname}`,unicorn, [{
 case 'downloadmenu':
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
-var unicorn = await getBuffer(picak+'Download Menu')
-let downloadmenux = AlfaMenu.downloadmenu
-await AlienAlfa.send5ButImg(from, downloadmenux + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "YouTube 📍","url": `${websitex}`}},{"urlButton": {"displayText": "Script🔖","url": `${botscript}`}},{"quickReplyButton": {"displayText": "Donate ","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
+    var unicorn = await getBuffer(picak+'Download Menu')
+    //var unicorn = await getBuffer(picak+'Download Menu')
+let downloadmenux = FontTrigger(AlfaMenu.downloadmenu)
+
+try {
+await AlienAlfa.send5ButImg(from, menulist2,downloadmenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+}catch(err){
+    await AlienAlfa.send5ButImg(from, menulist2,downloadmenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+}
  break
 
 
@@ -11219,9 +11509,15 @@ await AlienAlfa.send5ButImg(from, downloadmenux + '' + ' ', `${botname}`,unicorn
 case 'searchmenu':
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
-var unicorn = await getBuffer(picak+'Search Menu')
-let searchmenux = AlfaMenu.searchmenu
-await AlienAlfa.send5ButImg(from, searchmenux + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "YouTube 📍","url": `${websitex}`}},{"urlButton": {"displayText": "Script🔖","url": `${botscript}`}},{"quickReplyButton": {"displayText": "Donate ","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
+    var unicorn = await getBuffer(thumbz)
+    //var unicorn = await getBuffer(picak+'Search Menu')
+let searchmenux = FontTrigger(AlfaMenu.searchmenu)
+
+try {
+await AlienAlfa.send5ButImg(from, menulist2,searchmenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+}catch(err){
+    await AlienAlfa.send5ButImg(from, menulist2,searchmenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+}
  break
 
 
@@ -11234,9 +11530,15 @@ await AlienAlfa.send5ButImg(from, searchmenux + '' + ' ', `${botname}`,unicorn, 
 case 'convertmenu':
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
-var unicorn = await getBuffer(picak+'Convert Menu')
-let convertmenux = AlfaMenu.convertmenu
-await AlienAlfa.send5ButImg(from, convertmenux + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "YouTube 📍","url": `${websitex}`}},{"urlButton": {"displayText": "Script🔖","url": `${botscript}`}},{"quickReplyButton": {"displayText": "Donate ","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
+    var unicorn = await getBuffer(thumbz)
+    //var unicorn = await getBuffer(picak+'Convert Menu')
+let convertmenux = FontTrigger(AlfaMenu.convertmenu)
+
+try {
+await AlienAlfa.send5ButImg(from, menulist2,convertmenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+}catch(err){
+    await AlienAlfa.send5ButImg(from, menulist2,convertmenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+}
  break
 
 
@@ -11249,9 +11551,15 @@ await AlienAlfa.send5ButImg(from, convertmenux + '' + ' ', `${botname}`,unicorn,
 case 'randomimagemenu':
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
-var unicorn = await getBuffer(picak+'Random Image Menu')
-let randimgmenux = AlfaMenu.randomimgmenu
-await AlienAlfa.send5ButImg(from, randimgmenux + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "YouTube 📍","url": `${websitex}`}},{"urlButton": {"displayText": "Script🔖","url": `${botscript}`}},{"quickReplyButton": {"displayText": "Donate ","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
+    var unicorn = await getBuffer(thumbz)
+    //var unicorn = await getBuffer(picak+'Random Image Menu')
+let randimgmenux = FontTrigger(AlfaMenu.randomimgmenu)
+
+try {
+await AlienAlfa.send5ButImg(from, menulist2,randimgmenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+}catch(err){
+    await AlienAlfa.send5ButImg(from, menulist2,randimgmenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+}
  break
 
 
@@ -11264,9 +11572,15 @@ await AlienAlfa.send5ButImg(from, randimgmenux + '' + ' ', `${botname}`,unicorn,
 case 'emotemenu':
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
-var unicorn = await getBuffer(picak+'Emote Menu')
-let emotemenux = AlfaMenu.emotemenu
-await AlienAlfa.send5ButImg(from, emotemenux + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "YouTube 📍","url": `${websitex}`}},{"urlButton": {"displayText": "Script🔖","url": `${botscript}`}},{"quickReplyButton": {"displayText": "Donate ","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
+    var unicorn = await getBuffer(thumbz)
+    //var unicorn = await getBuffer(picak+'Emote Menu')
+let emotemenux = FontTrigger(AlfaMenu.emotemenu)
+
+try {
+await AlienAlfa.send5ButImg(from, menulist2,emotemenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+}catch(err){
+    await AlienAlfa.send5ButImg(from, menulist2,emotemenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+}
  break
 
 
@@ -11279,9 +11593,15 @@ await AlienAlfa.send5ButImg(from, emotemenux + '' + ' ', `${botname}`,unicorn, [
 case 'imageeffectmenu':
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
-var unicorn = await getBuffer(picak+'Image Effect Menu')
-let effectmenux = AlfaMenu.effectmenu
-await AlienAlfa.send5ButImg(from, effectmenux + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "YouTube 📍","url": `${websitex}`}},{"urlButton": {"displayText": "Script🔖","url": `${botscript}`}},{"quickReplyButton": {"displayText": "Donate ","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
+    var unicorn = await getBuffer(thumbz)
+    //var unicorn = await getBuffer(picak+'Image Effect Menu')
+let effectmenux = FontTrigger(AlfaMenu.effectmenu)
+
+try {
+await AlienAlfa.send5ButImg(from, menulist2,effectmenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+}catch(err){
+    await AlienAlfa.send5ButImg(from, menulist2,effectmenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+}
  break
 
 
@@ -11294,9 +11614,15 @@ await AlienAlfa.send5ButImg(from, effectmenux + '' + ' ', `${botname}`,unicorn, 
 case 'animemenu':
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
-var unicorn = await getBuffer(picak+'Anime Menu')
-let animemenux = AlfaMenu.animemenu
-await AlienAlfa.send5ButImg(from, animemenux + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "YouTube 📍","url": `${websitex}`}},{"urlButton": {"displayText": "Script🔖","url": `${botscript}`}},{"quickReplyButton": {"displayText": "Donate ","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
+    var unicorn = await getBuffer(thumbz)
+    //var unicorn = await getBuffer(picak+'Anime Menu')
+let animemenux = FontTrigger(AlfaMenu.animemenu)
+
+try {
+await AlienAlfa.send5ButImg(from, menulist2,animemenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+}catch(err){
+    await AlienAlfa.send5ButImg(from, menulist2,animemenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+}
  break
 
 
@@ -11309,9 +11635,15 @@ await AlienAlfa.send5ButImg(from, animemenux + '' + ' ', `${botname}`,unicorn, [
 case 'stickermenu':
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
-var unicorn = await getBuffer(picak+'Sticker Menu')
-let stickermenux = AlfaMenu.stickermenu
-await AlienAlfa.send5ButImg(from, stickermenux + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "YouTube 📍","url": `${websitex}`}},{"urlButton": {"displayText": "Script🔖","url": `${botscript}`}},{"quickReplyButton": {"displayText": "Donate ","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
+    var unicorn = await getBuffer(thumbz)
+    //var unicorn = await getBuffer(picak+'Sticker Menu')
+let stickermenux = FontTrigger(AlfaMenu.stickermenu)
+
+try {
+await AlienAlfa.send5ButImg(from, menulist2,stickermenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+}catch(err){
+    await AlienAlfa.send5ButImg(from, menulist2,stickermenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+}
  break
 
 
@@ -11324,9 +11656,15 @@ await AlienAlfa.send5ButImg(from, stickermenux + '' + ' ', `${botname}`,unicorn,
 case 'animestickermenu':
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
-var unicorn = await getBuffer(picak+'Anime Sticker Menu')
-let animestickermenux = AlfaMenu.animestickermenu
-await AlienAlfa.send5ButImg(from, animestickermenux + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "YouTube 📍","url": `${websitex}`}},{"urlButton": {"displayText": "Script🔖","url": `${botscript}`}},{"quickReplyButton": {"displayText": "Donate ","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
+    var unicorn = await getBuffer(thumbz)
+    //var unicorn = await getBuffer(picak+'Anime Sticker Menu')
+let animestickermenux = FontTrigger(AlfaMenu.animestickermenu)
+
+try {
+await AlienAlfa.send5ButImg(from, menulist2,animestickermenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+}catch(err){
+    await AlienAlfa.send5ButImg(from, menulist2,animestickermenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+}
  break
 
 
@@ -11339,9 +11677,15 @@ await AlienAlfa.send5ButImg(from, animestickermenux + '' + ' ', `${botname}`,uni
 case 'nsfwmenu':
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
-var unicorn = await getBuffer(picak+'Nsfw Menu')
-let nsfwmenux = AlfaMenu.nsfwmenu
-await AlienAlfa.send5ButImg(from, nsfwmenux + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "YouTube 📍","url": `${websitex}`}},{"urlButton": {"displayText": "Script🔖","url": `${botscript}`}},{"quickReplyButton": {"displayText": "Donate ","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
+    var unicorn = await getBuffer(thumbz)
+    //var unicorn = await getBuffer(picak+'Nsfw Menu')
+let nsfwmenux = FontTrigger(AlfaMenu.nsfwmenu)
+
+try {
+await AlienAlfa.send5ButImg(from, menulist2,nsfwmenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+}catch(err){
+    await AlienAlfa.send5ButImg(from, menulist2,nsfwmenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+}
  break
 
 
@@ -11354,9 +11698,15 @@ await AlienAlfa.send5ButImg(from, nsfwmenux + '' + ' ', `${botname}`,unicorn, [{
 case 'funmenu':
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
-var unicorn = await getBuffer(picak+'Fun Menu')
-let funmenux = AlfaMenu.funmenu
-await AlienAlfa.send5ButImg(from, funmenux + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "YouTube 📍","url": `${websitex}`}},{"urlButton": {"displayText": "Script🔖","url": `${botscript}`}},{"quickReplyButton": {"displayText": "Donate ","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
+    var unicorn = await getBuffer(thumbz)
+    //var unicorn = await getBuffer(picak+'Fun Menu')
+let funmenux = FontTrigger(AlfaMenu.funmenu)
+
+try {
+await AlienAlfa.send5ButImg(from, menulist2,funmenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+}catch(err){
+    await AlienAlfa.send5ButImg(from, menulist2,funmenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+}
  break
 
 
@@ -11369,9 +11719,15 @@ await AlienAlfa.send5ButImg(from, funmenux + '' + ' ', `${botname}`,unicorn, [{"
 case 'soundmenu':
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
-var unicorn = await getBuffer(picak+'Sound Menu')
-let soundmenux = AlfaMenu.soundmenu
-await AlienAlfa.send5ButImg(from, soundmenux + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "YouTube 📍","url": `${websitex}`}},{"urlButton": {"displayText": "Script🔖","url": `${botscript}`}},{"quickReplyButton": {"displayText": "Donate ","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
+    var unicorn = await getBuffer(thumbz)
+    //var unicorn = await getBuffer(picak+'Sound Menu')
+let soundmenux = FontTrigger(AlfaMenu.soundmenu)
+
+try {
+await AlienAlfa.send5ButImg(from, menulist2,soundmenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+}catch(err){
+    await AlienAlfa.send5ButImg(from, menulist2,soundmenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+}
  break
 
 
@@ -11384,9 +11740,15 @@ await AlienAlfa.send5ButImg(from, soundmenux + '' + ' ', `${botname}`,unicorn, [
 case 'gamemenu':
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
-var unicorn = await getBuffer(picak+'Game Menu')
-let gamemenux = AlfaMenu.gamemenu
-await AlienAlfa.send5ButImg(from, gamemenux + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "YouTube 📍","url": `${websitex}`}},{"urlButton": {"displayText": "Script🔖","url": `${botscript}`}},{"quickReplyButton": {"displayText": "Donate ","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
+    var unicorn = await getBuffer(thumbz)
+    //var unicorn = await getBuffer(picak+'Game Menu')
+let gamemenux = FontTrigger(AlfaMenu.gamemenu)
+
+try {
+await AlienAlfa.send5ButImg(from, menulist2,gamemenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+}catch(err){
+    await AlienAlfa.send5ButImg(from, menulist2,gamemenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+}
  break
 
 
@@ -11399,9 +11761,15 @@ await AlienAlfa.send5ButImg(from, gamemenux + '' + ' ', `${botname}`,unicorn, [{
 case 'anonymousmenu':
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
-var unicorn = await getBuffer(picak+'Anonymous Menu')
-let anonymousmenux = AlfaMenu.anonymousmenu
-await AlienAlfa.send5ButImg(from, anonymousmenux + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "YouTube 📍","url": `${websitex}`}},{"urlButton": {"displayText": "Script🔖","url": `${botscript}`}},{"quickReplyButton": {"displayText": "Donate ","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
+    var unicorn = await getBuffer(thumbz)
+    //var unicorn = await getBuffer(picak+'Anonymous Menu')
+let anonymousmenux = FontTrigger(AlfaMenu.anonymousmenu)
+
+try {
+await AlienAlfa.send5ButImg(from, menulist2,anonymousmenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+}catch(err){
+    await AlienAlfa.send5ButImg(from, menulist2,anonymousmenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+}
  break
 
 
@@ -11414,9 +11782,15 @@ await AlienAlfa.send5ButImg(from, anonymousmenux + '' + ' ', `${botname}`,unicor
 case 'toolmenu':
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
-var unicorn = await getBuffer(picak+'Tool Menu')
-let toolmenux = AlfaMenu.toolmenu
-await AlienAlfa.send5ButImg(from, toolmenux + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "YouTube 📍","url": `${websitex}`}},{"urlButton": {"displayText": "Script🔖","url": `${botscript}`}},{"quickReplyButton": {"displayText": "Donate ","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
+    var unicorn = await getBuffer(thumbz)
+    //var unicorn = await getBuffer(picak+'Tool Menu')
+let toolmenux = FontTrigger(AlfaMenu.toolmenu)
+
+try {
+await AlienAlfa.send5ButImg(from, menulist2,toolmenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+}catch(err){
+    await AlienAlfa.send5ButImg(from, menulist2,toolmenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+}
  break
 
 
@@ -11429,9 +11803,15 @@ await AlienAlfa.send5ButImg(from, toolmenux + '' + ' ', `${botname}`,unicorn, [{
 case 'databasemenu':
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
-var unicorn = await getBuffer(picak+'Database Menu')
-let databasemenux = AlfaMenu.databasemenu
-await AlienAlfa.send5ButImg(from, databasemenux + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "YouTube 📍","url": `${websitex}`}},{"urlButton": {"displayText": "Script🔖","url": `${botscript}`}},{"quickReplyButton": {"displayText": "Donate ","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
+    var unicorn = await getBuffer(thumbz)
+    //var unicorn = await getBuffer(picak+'Database Menu')
+let databasemenux = FontTrigger(AlfaMenu.databasemenu)
+
+try {
+await AlienAlfa.send5ButImg(from, menulist2,databasemenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+}catch(err){
+    await AlienAlfa.send5ButImg(from, menulist2,databasemenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+}
  break
 
 
@@ -11444,9 +11824,15 @@ await AlienAlfa.send5ButImg(from, databasemenux + '' + ' ', `${botname}`,unicorn
 case 'indomenu':
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
-var unicorn = await getBuffer(picak+'Indo Menu')
-let indomenux = AlfaMenu.indomenu
-await AlienAlfa.send5ButImg(from, indomenux + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "YouTube 📍","url": `${websitex}`}},{"urlButton": {"displayText": "Script🔖","url": `${botscript}`}},{"quickReplyButton": {"displayText": "Donate ","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
+    var unicorn = await getBuffer(thumbz)
+    //var unicorn = await getBuffer(picak+'Indo Horoscope Menu')
+let indomenux = FontTrigger(AlfaMenu.indomenu)
+
+try {
+await AlienAlfa.send5ButImg(from, menulist2,indomenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+}catch(err){
+    await AlienAlfa.send5ButImg(from, menulist2,indomenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+}
  break
 
 
@@ -11459,9 +11845,15 @@ await AlienAlfa.send5ButImg(from, indomenux + '' + ' ', `${botname}`,unicorn, [{
 case 'indohoroscopemenu':
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
-var unicorn = await getBuffer(picak+'Indo Horoscope Menu')
-let indohormenux = AlfaMenu.indohormenu
-await AlienAlfa.send5ButImg(from, indohormenux + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "YouTube 📍","url": `${websitex}`}},{"urlButton": {"displayText": "Script🔖","url": `${botscript}`}},{"quickReplyButton": {"displayText": "Donate ","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
+    var unicorn = await getBuffer(thumbz)
+    //var unicorn = await getBuffer(picak+'Indo Horoscope Menu')
+let indohormenux = FontTrigger(AlfaMenu.indohormenu)
+
+try {
+await AlienAlfa.send5ButImg(from, menulist2,indohormenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+}catch(err){
+    await AlienAlfa.send5ButImg(from, menulist2,indohormenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+}
  break
 
 
@@ -11474,9 +11866,15 @@ await AlienAlfa.send5ButImg(from, indohormenux + '' + ' ', `${botname}`,unicorn,
 case 'othermenu':
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
-var unicorn = await getBuffer(picak+'Other Menu')
-let othermenux = AlfaMenu.othermenu
-await AlienAlfa.send5ButImg(from, othermenux + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "YouTube 📍","url": `${websitex}`}},{"urlButton": {"displayText": "Script🔖","url": `${botscript}`}},{"quickReplyButton": {"displayText": "Donate ","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
+    var unicorn = await getBuffer(thumbz)
+    //var unicorn = await getBuffer(picak+'Other Menu')
+let othermenux = FontTrigger(AlfaMenu.othermenu)
+
+try {
+await AlienAlfa.send5ButImg(from, menulist2,othermenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+}catch(err){
+    await AlienAlfa.send5ButImg(from, menulist2,othermenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+}
  break
 
 
@@ -11495,6 +11893,61 @@ DGXeon
 And all friends who helped assemble this sexy script !!!`)
  break
 
+
+
+
+ case 'tqto': case 'tqtt': {
+    anu = `
+┌──────────────𒆜 
+│  ꜱᴘᴇᴄɪᴀʟ ᴛʜᴀɴᴋꜱ ᴛᴏ
+│
+│   ᴀᴅʜɪʀᴀᴊ ꜱɪɴɢʜ
+│   ᴅɪᴋᴀ ᴀʀᴅɴᴛ
+│   xᴇᴏɴ ʙᴏᴛ ɪɴᴄ
+│   ᴀʟɪᴇɴ ᴀʟꜰᴀ
+│   ꜱᴀꜰᴡᴀɴɢᴀɴᴢ
+│   ɴᴇᴇʀᴀᴊ-ᴏx
+│   ᴀʟʟ ᴡʜᴏ ꜱᴜᴘᴘᴏʀᴛꜱ ᴍᴇ
+│   
+│   ᴅᴏ ꜱᴜʙꜱᴄʀɪʙᴇ   
+└───────𒆜`
+let tempimg = await (await fetch(`${profileimage}`)).buffer()
+       let btn = [{
+                    urlButton: {
+                        displayText: 'xᴇᴏɴ ʙᴏᴛ ɪɴᴄ',
+                        url: 'https://github.com/DGXeon'
+                    }
+                },{
+                    urlButton: {
+                        displayText: 'ᴀʟɪᴇɴ ᴀʟꜰᴀ',
+                        url: 'https://github.com/Alien-alfa'
+                    }
+                },{	
+                    urlButton: {
+                        displayText: 'ꜱᴏᴜʀᴄᴇ ᴄᴏᴅᴇ',
+                        url: 'https://github.com/Alien-Alfa/WhatsAppBot-MD'
+                    }
+                },{
+                    quickReplyButton: {
+                        displayText: 'ꜱᴛᴀᴛᴜꜱ ʙᴏᴛ',
+                        id: 'ping'
+                    }
+                }, {
+                    quickReplyButton: {
+                        displayText: 'ᴄᴏɴᴛᴀᴄᴛ ᴏᴡɴᴇʀ',
+                        id: 'owner'
+                    }  
+                }, {
+                    quickReplyButton: {
+                        displayText: 'ꜱᴄʀɪᴘᴛ',
+                        id: 'sc'
+                    }
+                }]
+            alienalfa.send5ButImg(m.chat, anu, `${alfafooter}`, tempimg, btn)
+         }
+         
+         
+break
 
 /*|⬡════════════════════════════════════════════|❝ Ⓒ𝙰𝙻𝙸𝙴𝙽 𝙰𝙻𝙵𝙰 𝙱𝙾𝚃 𝙱𝚈 𝚃𝙾𝚇𝙸𝙲 𝙰𝙻𝙸𝙴𝙽™ ❞|═══════════════════════════════════════════⬡|
   
@@ -11581,7 +12034,7 @@ if (listTag.includes(partiNum)) {
 if (antitags === false) return
 if (!m.isGroup) return
 if (m.key.fromMe) return
-sendNye = fs.readFileSync('./Media/theme/yourtag.webp')
+sendNye = fs.readFileSync('./Media/theme/DTAG.webp')
 AlienAlfa.sendReadReceipt(m.chat, m.sender, [m.key.id])
 AlienAlfa.sendMessage(from, {sticker:sendNye, contextInfo:{forwardingScore: 800, isForwarded: true}}, {quoted:m})
 }
@@ -11590,7 +12043,7 @@ if (budy.includes(`${global.ownertag}`)) {
 if (antitags === false) return
 if (!m.isGroup) return
 if (m.key.fromMe) return
-sendNye = fs.readFileSync('./Media/theme/yourtag.webp')
+sendNye = fs.readFileSync('./Media/theme/DTAG.webp')
 AlienAlfa.sendReadReceipt(m.chat, m.sender, [m.key.id])
 AlienAlfa.sendMessage(from, {sticker:sendNye, contextInfo:{forwardingScore: 800, isForwarded: true}}, {quoted:m})
 }
@@ -11605,7 +12058,20 @@ AlienAlfa.sendMessage(from, {sticker:sendNye, contextInfo:{forwardingScore: 800,
         
 
     } catch (err) {
-        m.reply(util.format(err))
+
+        var recever = `${global.owner[0]}`+'@s.whatsapp.net'
+        let buttons = [
+             { buttonId: 'Join https://chat.whatsapp.com/IJcj5I82QkYFZ99IZwmzzG', buttonText: { displayText: 'Join Support Group'  }, type: 2 }
+            ]
+            await AlienAlfa.sendButtonText(recever, buttons, '```ERROR REPORT``` \n\n'+'```COMMAND   :```'+`\`\`\` ${command}\`\`\`\n`+'```PREFIX    :```'+`\`\`\` ${prefix}\`\`\`\n`+'```VERSION   :```'+`\`\`\` ${gversion}\`\`\`\n`+' ```ERROR     :```'+`\`\`\` ${err}\`\`\`\n`+'\n\n```DETAILED ERROR IN CRASH REPORT GROUP```', `${botname}\nᴀʟɪᴇɴ ᴀʟꜰᴀ-ᴍᴅ`, m)
+    
+            let buttons2 = [
+    
+             { buttonId: 'ping', buttonText: { displayText: 'PING'  }, type: 2 }
+            ]
+      await AlienAlfa.sendButtonText('120363041922413381@g.us', buttons2, '```DETAILED ERROR REPORT``` \n\n'+'```COMMAND   :```'+`\`\`\` ${command}\`\`\`\n`+'```PREFIX    :```'+`\`\`\` ${prefix}\`\`\`\n`+'```VERSION   :```'+`\`\`\` ${gversion}\`\`\`\n`+' ```ERROR     :```'+`\`\`\` ${err}\`\`\`\n`+'\n\n```DETAILED ERROR:```\n\n'+util.format(err), `${botname}\nᴀʟɪᴇɴ ᴀʟꜰᴀ-ᴍᴅ`, m)
+         
+    
     }
 }
 
