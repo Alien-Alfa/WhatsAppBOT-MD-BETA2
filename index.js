@@ -85,7 +85,8 @@ const PastebinAPI = require('pastebin-js'),
  
 
 let remsession = global.session
-if(remsession != false){
+if(global.session != false){
+
 let pastbin = atob(`${remsession}`)
 fetch(`https://pastebin.com/raw/${pastbin}`)
 .then(response => response.json())
@@ -101,6 +102,7 @@ fetch(`https://pastebin.com/raw/${pastbin}`)
                 })
 
             }
+
   setTimeout(() => {
 var low
 try {
