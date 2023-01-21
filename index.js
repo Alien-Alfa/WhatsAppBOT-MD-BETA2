@@ -88,10 +88,10 @@ const PastebinAPI = require('pastebin-js'),
 let remsession = global.session
 if(global.session != false){
 
-let pastbin = atob(`${remsession}`)
+//let pastbin = atob(`${remsession}`)
 
 		if (!fs.existsSync('./session.alfa.json')) {
-			MakeSession('./session.alfa.json', remsession) }
+			MakeSession(remsession,'./session.alfa.json') }
 
         }
   setTimeout(() => {
