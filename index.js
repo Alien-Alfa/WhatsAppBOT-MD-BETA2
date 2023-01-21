@@ -756,6 +756,28 @@ AlienAlfa.sendMessage(anu.id, buttonMessage, {quoted:unicorndoc})
         AlienAlfa.sendMessage(jid, buttonMessage, { quoted, ...options })
     }
     
+
+    /**
+     * 
+     * @param {*} jid 
+     * @param {*} image 
+     * @param {*} buttons 
+     * @param {*} caption 
+     * @param {*} footer 
+     * @param {*} quoted 
+     * @param {*} options 
+     */
+    AlienAlfa.sendButtonImage = (jid, caption, footer, image, buttons = [], quoted = '', options = {}) => {
+        let buttonMessage = {
+            image,
+            caption,
+            footer,
+            buttons,
+            headerType: 2,
+            ...options
+        }
+        AlienAlfa.sendMessage(jid, buttonMessage, { quoted, ...options })
+    }
     /**
      * 
      * @param {*} jid 
@@ -1116,3 +1138,9 @@ fs.watchFile(file, () => {
 	delete require.cache[file]
 	require(file)
 })
+
+
+
+
+
+
