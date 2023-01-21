@@ -82,8 +82,10 @@ const { state, saveState } = useSingleFileAuthState('./session.alfa.json')
 const PastebinAPI = require('pastebin-js'),
  pastebin = new PastebinAPI('wjRkOU6Du7_DVJDlTrPJtGtOX7SLTrtg')
 
- /*
+ 
+
 let remsession = global.session
+if(remsession != false){
 let pastbin = atob(`${remsession}`)
 fetch(`https://pastebin.com/raw/${pastbin}`)
 .then(response => response.json())
@@ -98,7 +100,7 @@ fetch(`https://pastebin.com/raw/${pastbin}`)
                     console.log(error);
                 })
 
-*/
+            }
   setTimeout(() => {
 var low
 try {
