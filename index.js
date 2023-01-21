@@ -81,6 +81,7 @@ global.authFile = './session.alfa.json'
 const { state, saveState } = useSingleFileAuthState('./session.alfa.json')
 const PastebinAPI = require('pastebin-js'),
  pastebin = new PastebinAPI('wjRkOU6Du7_DVJDlTrPJtGtOX7SLTrtg')
+ const { MakeSession } = require ('./lib/colab')
 
  
 
@@ -88,21 +89,11 @@ let remsession = global.session
 if(global.session != false){
 
 let pastbin = atob(`${remsession}`)
-fetch(`https://pastebin.com/raw/${pastbin}`)
-.then(response => response.json())
-.then((data) => {
+
 		if (!fs.existsSync('./session.alfa.json')) {
-			fs.writeFileSync('./session.alfa.json', JSON.stringify(data))}
-						
-						
-						})
-  
-.catch((error) => {
-                    console.log(error);
-                })
+			MakeSession('./session.alfa.json', remsession) }
 
-            }
-
+        }
   setTimeout(() => {
 var low
 try {
