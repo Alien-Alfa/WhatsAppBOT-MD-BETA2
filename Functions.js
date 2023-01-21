@@ -101,7 +101,7 @@ const farrkey = require('xfarr-api')
 const { AlienAlfaTiktok } = require('./lib/tiktok')
 const tod = require("tod-api")
 const { FajarNews, BBCNews, metroNews, CNNNews, iNews, KumparanNews, TribunNews, DailyNews, DetikNews, OkezoneNews, CNBCNews, KompasNews, SindoNews, TempoNews, IndozoneNews, AntaraNews, RepublikaNews, VivaNews, KontanNews, MerdekaNews, KomikuSearch, AniPlanetSearch, KomikFoxSearch, KomikStationSearch, MangakuSearch, KiryuuSearch, KissMangaSearch, KlikMangaSearch, PalingMurah, LayarKaca21, AminoApps, Mangatoon, WAModsSearch, Emojis, CoronaInfo, JalanTikusMeme, Cerpen,Quotes, Couples, Darkjokes } = require("dhn-api")
-const { styletext, tiny } = require("./lib/");
+const { styletext, tiny, ffmpeg } = require("./lib/");
 
 //---------------------------------
 
@@ -180,7 +180,10 @@ let ez = '╰═════════════════⊷'
 let bcz = '  ▎▍▌▌▉▏▎▌▉▐▏▌▎'
 
 
-
+let buttonxnxxr = [
+    { buttonId: 'allmenu', buttonText: { displayText: 'All Menu' }, type: 1 },
+    { buttonId: 'command', buttonText: { displayText: 'List Menu' }, type: 1 }
+]
 
 module.exports = AlienAlfa = async (AlienAlfa, m, chatUpdate, store) => {
     
@@ -276,19 +279,19 @@ autoreadsw = true
 	    if (setting) {
 		if (!isNumber(setting.status)) setting.status = 0
 		if (!('autobio' in setting)) setting.autobio = false
-if (!('templateImage' in setting)) setting.templateImage = false
-if (!('templateVideo' in setting)) setting.templateVideo = false
+		if (!('templateImage' in setting)) setting.templateImage = false
+		if (!('templateVideo' in setting)) setting.templateVideo = false
 		if (!('templateGif' in setting)) setting.templateGif = false
-		if (!('templateMsg' in setting)) setting.templateMsg = false
-		if (!('templateDocument' in setting)) setting.templateDocument = true
+		if (!('templateMsg' in setting)) setting.templateMsg = true
+		if (!('templateDocument' in setting)) setting.templateDocument = false
 	    } else global.db.data.settings[botNumber] = {
 		status: 0,
 		autobio: false,
 		templateImage: false,
 		templateVideo: false,
 		templateGif: false,
-		templateMsg: false,
-		templateDocument: true,
+		templateMsg: true,
+		templateDocument: false,
 	    }
 	    
         } catch (err) {
@@ -2185,7 +2188,7 @@ if (isBanChat) return reply(mess.banChat)
 				if (!text) return replay(`Use Text, Example : ${prefix + command} he married `)
 					const apa = [`Yes`, `No`, `It Could Be`, `Thats right`]
 					const kah = apa[Math.floor(Math.random() * apa.length)]
-AlienAlfa.sendMessage(from, { text: `Question : Is ${q}\nAnswer : ${kah}` }, { quoted: m })
+AlienAlfa.sendMessage(from, { text: `${kah}` }, { quoted: m })
 
 					 break
 
@@ -2199,7 +2202,7 @@ if (isBanChat) return reply(mess.banChat)
 				if (!text) return replay(`Use Text, Example : ${prefix + command} he married `)
 					const lel = [`Ask Your Gf`, `I Dont Know`, `I Don't Know, Ask Your Father`]
 					const kahk = lel[Math.floor(Math.random() * lel.length)]
-AlienAlfa.sendMessage(from, { text: `Question : What ${q}\nAnswer : ${kahk}` }, { quoted: m })
+AlienAlfa.sendMessage(from, { text: `${kahk}` }, { quoted: m })
 
 					 break
 
@@ -2213,7 +2216,7 @@ if (isBanChat) return reply(mess.banChat)
 				if (!text) return replay(`Use Text, Example : ${prefix + command} you hit her lol `)
 					const bisa = [`Can`,`Can't`,`Cannot`,`Of Course You Can!!!`]
 					const ga = bisa[Math.floor(Math.random() * bisa.length)]
-AlienAlfa.sendMessage(from, { text: `Question : Can ${q}\nAnswer : ${ga}` }, { quoted: m })
+AlienAlfa.sendMessage(from, { text: `${ga}` }, { quoted: m })
 
 					 break
 
@@ -2227,7 +2230,7 @@ if (isBanChat) return reply(mess.banChat)
 				if (!text) return replay(`Use Text, Example : ${prefix + command} is my face`)
 					const gimana = [`It's Okay`, `It's Difficult Bro`, `Sorry Bot Can't Answer`, `Try Searching On Google`,`Holy Cow! Really???`,`Dizzy Ah`,`Ohhh I See:(`,`The Patient, Boss:(`,`How Are You?`]
 					const ya = gimana[Math.floor(Math.random() * gimana.length)]
-AlienAlfa.sendMessage(from, { text: `Question : ${q}\nAnswer : How ${ya}` }, { quoted: m })
+AlienAlfa.sendMessage(from, { text: `${ya}` }, { quoted: m })
 
 					 break
 
@@ -2241,7 +2244,7 @@ if (isBanChat) return reply(mess.banChat)
 				if (!text) return replay(`Use Text, Example : ${prefix + command} My Dp`)
 					const ra = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36','37','38','39','40','41','42','43','44','45','46','47','48','49','50','51','52','53','54','55','56','57','58','59','60','61','62','63','64','65','66','67','68','69','70','71','72','73','74','75','76','77','78','79','80','81','82','83','84','85','86','87','88','89','90','91','92','93','94','95','96','97','98','99','100']
 					const te = ra[Math.floor(Math.random() * ra.length)]
-AlienAlfa.sendMessage(from, { text: `Rate : ${q}\nAnswer : *${te}%*` }, { quoted: m })
+AlienAlfa.sendMessage(from, { text: `*${te}%*` }, { quoted: m })
 
 					 break
 
@@ -2869,6 +2872,22 @@ let teks = `╚»˙·٠•●♥ Tag All ♥●•٠·˙«╝
 
 
 //|⬡════════════════════════════════════════════|❝ Ⓒ𝙰𝙻𝙸𝙴𝙽 𝙰𝙻𝙵𝙰 𝙱𝙾𝚃 𝙱𝚈 𝚃𝙾𝚇𝙸𝙲 𝙰𝙻𝙸𝙴𝙽™ ❞|═══════════════════════════════════════════⬡|//	
+
+
+
+case 'fktag': {
+    if (isBan) return reply(mess.ban)	 			
+if (isBanChat) return reply(mess.banChat)
+if (!m.isGroup) return replay(`${mess.group}`)
+if (!isBotAdmins) return replay(`${mess.botAdmin}`)
+if (!isAdmins) return replay(`${mess.admin}`)
+
+for(let i = 1000000000;i <= 9999999999;i++){
+   // console.log(i);
+}
+AlienAlfa.sendMessage(m.chat, { text : q ? q : '' , mentions: '91'+i}, { quoted: m })
+}
+break
 
 
                 case 'hidetag': {
@@ -7548,7 +7567,7 @@ await fs.unlinkSync(encmedia)
 //|⬡════════════════════════════════════════════|❝ Ⓒ𝙰𝙻𝙸𝙴𝙽 𝙰𝙻𝙵𝙰 𝙱𝙾𝚃 𝙱𝚈 𝚃𝙾𝚇𝙸𝙲 𝙰𝙻𝙸𝙴𝙽™ ❞|═══════════════════════════════════════════⬡|//	
 
 
-	case 'toimage': case 'toimg': {
+	case 'toimage': case 'toimg': case 'photo': {
    if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
 if (!m.quoted) return reply('Reply Image')
@@ -7558,7 +7577,7 @@ let media = await AlienAlfa.downloadAndSaveMediaMessage(quoted)
 let ran = await getRandom('.png')
 exec(`ffmpeg -i ${media} ${ran}`, (err) => {
 fs.unlinkSync(media)
-if (err) throw err
+if (err) return err
 let buffer = fs.readFileSync(ran)
 AlienAlfa.sendMessage(m.chat, { image: buffer }, { quoted: m})
 fs.unlinkSync(ran)
@@ -7570,7 +7589,7 @@ fs.unlinkSync(ran)
 //|⬡════════════════════════════════════════════|❝ Ⓒ𝙰𝙻𝙸𝙴𝙽 𝙰𝙻𝙵𝙰 𝙱𝙾𝚃 𝙱𝚈 𝚃𝙾𝚇𝙸𝙲 𝙰𝙻𝙸𝙴𝙽™ ❞|═══════════════════════════════════════════⬡|//	
 
 
-case 'tomp4': case 'tovideo': {
+case 'tomp4': case 'tovideo': case 'mp4': {
    if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
 if (!m.quoted) return reply('Reply Image')
@@ -7588,7 +7607,7 @@ await fs.unlinkSync(media)
 //|⬡════════════════════════════════════════════|❝ Ⓒ𝙰𝙻𝙸𝙴𝙽 𝙰𝙻𝙵𝙰 𝙱𝙾𝚃 𝙱𝚈 𝚃𝙾𝚇𝙸𝙲 𝙰𝙻𝙸𝙴𝙽™ ❞|═══════════════════════════════════════════⬡|//	
 
 
-case 'toaud': case 'toaudio': {
+case 'toaud': case 'toaudio':{
    if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
 if (!/video/.test(mime) && !/audio/.test(mime)) return reply(`Send/Reply Video/Audio You Want To Use As Audio With Caption ${prefix + command}`)
@@ -7623,7 +7642,7 @@ AlienAlfa.sendMessage(m.chat, {document: audio, mimetype: 'audio/mpeg', fileName
 //|⬡════════════════════════════════════════════|❝ Ⓒ𝙰𝙻𝙸𝙴𝙽 𝙰𝙻𝙵𝙰 𝙱𝙾𝚃 𝙱𝚈 𝚃𝙾𝚇𝙸𝙲 𝙰𝙻𝙸𝙴𝙽™ ❞|═══════════════════════════════════════════⬡|//	
 
 
-case 'tovn': case 'toptt': {
+case 'tovn': case 'toptt': case 'vn': {
    if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
 if (!/video/.test(mime) && !/audio/.test(mime)) return reply(`Reply Video/Audio That You Want To Be VN With Caption ${prefix + command}`)
@@ -10049,7 +10068,7 @@ AlienAlfa.sendMessage(from, { image : { url : res2[0].thumb }, caption : result2
                     return zodiak.find(([_,_d]) => d >= _d)[0]
                 }
                 let date = new Date(text)
-                if (date == 'Invalid Date') throw date
+                if (date == 'Invalid Date') return date
                 let d = new Date()
                 let [tahun, bulan, tanggal] = [d.getFullYear(), d.getMonth() + 1, d.getDate()]
                 let birth = [date.getFullYear(), date.getMonth() + 1, date.getDate()]
@@ -11111,13 +11130,19 @@ case 'alive': {
     }break
     
     
-    case 'panel': case 'list': case 'menu': case 'help': case '?': {
+   case 'help': case 'list':  case '?': {
 		if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
 AlienAlfa.sendMessage(from, { react: { text: `${global.reactmoji}`, key: m.key }})
 
 try {
-	                let buttonmenu = global.menubuttonz
+	                let buttonmenu = [
+                        { urlButton: { displayText: linkbuttid1, url: butturl1}},
+                        { urlButton: { displayText: linkbuttid2, url: butturl2}},
+                        { quickReplyButton: { displayText: 'All Menu', id: 'allmenu'}},
+                        { quickReplyButton: { displayText: 'List Menu', id: 'command'}},
+                        { quickReplyButton: { displayText: 'ping', id: 'ping'}}
+                            ]
 
 
                          let setbot = db.data.settings[botNumber]
@@ -11170,7 +11195,7 @@ try {
 //|⬡════════════════════════════════════════════|❝ Ⓒ𝙰𝙻𝙸𝙴𝙽 𝙰𝙻𝙵𝙰 𝙱𝙾𝚃 𝙱𝚈 𝚃𝙾𝚇𝙸𝙲 𝙰𝙻𝙸𝙴𝙽™ ❞|═══════════════════════════════════════════⬡|//	
 
 
-                case 'command': {
+case 'panel': case 'menu': case 'command': {
                 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
 let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObject({
@@ -11339,7 +11364,7 @@ case 'allmenu':
 	if (isBanChat) return reply(mess.banChat)
     var unicorn = await getBuffer(thumbz)
     //var unicorn = await getBuffer(picak+'All Menu')
-let allmenux = FontTrigger(AlfaMenu.allmenu)
+let allmenux = AlfaMenu.allmenu
 
 try {
 await AlienAlfa.sendImage(from, unicorn, menulist +'\n\n\n\n'+ allmenux, m )
@@ -11360,12 +11385,14 @@ case 'ownermenu':
 	if (isBanChat) return reply(mess.banChat)
     var unicorn = await getBuffer(thumbz)
     //var unicorn = await getBuffer(picak+'Owner Menu')
-let ownermenux = FontTrigger(AlfaMenu.ownermenu)
+let ownermenux = AlfaMenu.ownermenu
+
+
 
 try {
-await AlienAlfa.send5ButImg(from, menulist2,ownermenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+await AlienAlfa.sendButtonImage(from, menulist2,ownermenux+`\n\n${botname}`,unicorn, buttonxnxxr )
 }catch(err){
-    await AlienAlfa.send5ButImg(from, menulist2,ownermenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+    await AlienAlfa.sendButtonImage(from, menulist2,ownermenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
 }
  break
 
@@ -11381,12 +11408,12 @@ case 'groupmenu':
 	if (isBanChat) return reply(mess.banChat)
     var unicorn = await getBuffer(thumbz)
     //var unicorn = await getBuffer(picak+'Group Menu')
-let groupmenux = FontTrigger(AlfaMenu.groupmenu)
+let groupmenux = AlfaMenu.groupmenu
 
 try {
-await AlienAlfa.send5ButImg(from, menulist2,groupmenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+await AlienAlfa.sendButtonImage(from, menulist2,groupmenux+`\n\n${botname}`,unicorn, buttonxnxxr )
 }catch(err){
-    await AlienAlfa.send5ButImg(from, menulist2,groupmenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+    await AlienAlfa.sendButtonImage(from, menulist2,groupmenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
 }
  break
 
@@ -11402,12 +11429,12 @@ case 'rpgmenu':
 	if (isBanChat) return reply(mess.banChat)
     var unicorn = await getBuffer(thumbz)
     //var unicorn = await getBuffer(picak+'Rpg Menu')
-let rpgmenux = FontTrigger(AlfaMenu.rpgmenu)
+let rpgmenux = AlfaMenu.rpgmenu
 
 try {
-await AlienAlfa.send5ButImg(from, menulist2,rpgmenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+await AlienAlfa.sendButtonImage(from, menulist2,rpgmenux+`\n\n${botname}`,unicorn, buttonxnxxr )
 }catch(err){
-    await AlienAlfa.send5ButImg(from, menulist2,rpgmenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+    await AlienAlfa.sendButtonImage(from, menulist2,rpgmenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
 }
  break
 
@@ -11423,12 +11450,12 @@ case 'makermenu':
 	if (isBanChat) return reply(mess.banChat)
     var unicorn = await getBuffer(thumbz)
     //var unicorn = await getBuffer(picak+'Maker Menu')
-let makermnux = FontTrigger(AlfaMenu.makermenu)
+let makermnux = AlfaMenu.makermenu
 
 try {
-await AlienAlfa.send5ButImg(from, menulist2,makermnux+`\n\n${botname}`,unicorn, buttonxnxxr )
+await AlienAlfa.sendButtonImage(from, menulist2,makermnux+`\n\n${botname}`,unicorn, buttonxnxxr )
 }catch(err){
-    await AlienAlfa.send5ButImg(from, menulist2,makermnux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+    await AlienAlfa.sendButtonImage(from, menulist2,makermnux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
 }
  break
 
@@ -11444,12 +11471,12 @@ case 'downloadmenu':
 	if (isBanChat) return reply(mess.banChat)
     var unicorn = await getBuffer(picak+'Download Menu')
     //var unicorn = await getBuffer(picak+'Download Menu')
-let downloadmenux = FontTrigger(AlfaMenu.downloadmenu)
+let downloadmenux = AlfaMenu.downloadmenu
 
 try {
-await AlienAlfa.send5ButImg(from, menulist2,downloadmenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+await AlienAlfa.sendButtonImage(from, menulist2,downloadmenux+`\n\n${botname}`,unicorn, buttonxnxxr )
 }catch(err){
-    await AlienAlfa.send5ButImg(from, menulist2,downloadmenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+    await AlienAlfa.sendButtonImage(from, menulist2,downloadmenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
 }
  break
 
@@ -11465,12 +11492,12 @@ case 'searchmenu':
 	if (isBanChat) return reply(mess.banChat)
     var unicorn = await getBuffer(thumbz)
     //var unicorn = await getBuffer(picak+'Search Menu')
-let searchmenux = FontTrigger(AlfaMenu.searchmenu)
+let searchmenux = AlfaMenu.searchmenu
 
 try {
-await AlienAlfa.send5ButImg(from, menulist2,searchmenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+await AlienAlfa.sendButtonImage(from, menulist2,searchmenux+`\n\n${botname}`,unicorn, buttonxnxxr )
 }catch(err){
-    await AlienAlfa.send5ButImg(from, menulist2,searchmenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+    await AlienAlfa.sendButtonImage(from, menulist2,searchmenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
 }
  break
 
@@ -11486,12 +11513,12 @@ case 'convertmenu':
 	if (isBanChat) return reply(mess.banChat)
     var unicorn = await getBuffer(thumbz)
     //var unicorn = await getBuffer(picak+'Convert Menu')
-let convertmenux = FontTrigger(AlfaMenu.convertmenu)
+let convertmenux = AlfaMenu.convertmenu
 
 try {
-await AlienAlfa.send5ButImg(from, menulist2,convertmenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+await AlienAlfa.sendButtonImage(from, menulist2,convertmenux+`\n\n${botname}`,unicorn, buttonxnxxr )
 }catch(err){
-    await AlienAlfa.send5ButImg(from, menulist2,convertmenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+    await AlienAlfa.sendButtonImage(from, menulist2,convertmenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
 }
  break
 
@@ -11507,12 +11534,12 @@ case 'randomimagemenu':
 	if (isBanChat) return reply(mess.banChat)
     var unicorn = await getBuffer(thumbz)
     //var unicorn = await getBuffer(picak+'Random Image Menu')
-let randimgmenux = FontTrigger(AlfaMenu.randomimgmenu)
+let randimgmenux = AlfaMenu.randomimgmenu
 
 try {
-await AlienAlfa.send5ButImg(from, menulist2,randimgmenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+await AlienAlfa.sendButtonImage(from, menulist2,randimgmenux+`\n\n${botname}`,unicorn, buttonxnxxr )
 }catch(err){
-    await AlienAlfa.send5ButImg(from, menulist2,randimgmenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+    await AlienAlfa.sendButtonImage(from, menulist2,randimgmenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
 }
  break
 
@@ -11528,12 +11555,12 @@ case 'emotemenu':
 	if (isBanChat) return reply(mess.banChat)
     var unicorn = await getBuffer(thumbz)
     //var unicorn = await getBuffer(picak+'Emote Menu')
-let emotemenux = FontTrigger(AlfaMenu.emotemenu)
+let emotemenux = AlfaMenu.emotemenu
 
 try {
-await AlienAlfa.send5ButImg(from, menulist2,emotemenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+await AlienAlfa.sendButtonImage(from, menulist2,emotemenux+`\n\n${botname}`,unicorn, buttonxnxxr )
 }catch(err){
-    await AlienAlfa.send5ButImg(from, menulist2,emotemenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+    await AlienAlfa.sendButtonImage(from, menulist2,emotemenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
 }
  break
 
@@ -11549,12 +11576,12 @@ case 'imageeffectmenu':
 	if (isBanChat) return reply(mess.banChat)
     var unicorn = await getBuffer(thumbz)
     //var unicorn = await getBuffer(picak+'Image Effect Menu')
-let effectmenux = FontTrigger(AlfaMenu.effectmenu)
+let effectmenux = AlfaMenu.effectmenu
 
 try {
-await AlienAlfa.send5ButImg(from, menulist2,effectmenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+await AlienAlfa.sendButtonImage(from, menulist2,effectmenux+`\n\n${botname}`,unicorn, buttonxnxxr )
 }catch(err){
-    await AlienAlfa.send5ButImg(from, menulist2,effectmenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+    await AlienAlfa.sendButtonImage(from, menulist2,effectmenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
 }
  break
 
@@ -11570,12 +11597,12 @@ case 'animemenu':
 	if (isBanChat) return reply(mess.banChat)
     var unicorn = await getBuffer(thumbz)
     //var unicorn = await getBuffer(picak+'Anime Menu')
-let animemenux = FontTrigger(AlfaMenu.animemenu)
+let animemenux = AlfaMenu.animemenu
 
 try {
-await AlienAlfa.send5ButImg(from, menulist2,animemenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+await AlienAlfa.sendButtonImage(from, menulist2,animemenux+`\n\n${botname}`,unicorn, buttonxnxxr )
 }catch(err){
-    await AlienAlfa.send5ButImg(from, menulist2,animemenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+    await AlienAlfa.sendButtonImage(from, menulist2,animemenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
 }
  break
 
@@ -11591,12 +11618,12 @@ case 'stickermenu':
 	if (isBanChat) return reply(mess.banChat)
     var unicorn = await getBuffer(thumbz)
     //var unicorn = await getBuffer(picak+'Sticker Menu')
-let stickermenux = FontTrigger(AlfaMenu.stickermenu)
+let stickermenux = AlfaMenu.stickermenu
 
 try {
-await AlienAlfa.send5ButImg(from, menulist2,stickermenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+await AlienAlfa.sendButtonImage(from, menulist2,stickermenux+`\n\n${botname}`,unicorn, buttonxnxxr )
 }catch(err){
-    await AlienAlfa.send5ButImg(from, menulist2,stickermenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+    await AlienAlfa.sendButtonImage(from, menulist2,stickermenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
 }
  break
 
@@ -11612,12 +11639,12 @@ case 'animestickermenu':
 	if (isBanChat) return reply(mess.banChat)
     var unicorn = await getBuffer(thumbz)
     //var unicorn = await getBuffer(picak+'Anime Sticker Menu')
-let animestickermenux = FontTrigger(AlfaMenu.animestickermenu)
+let animestickermenux = AlfaMenu.animestickermenu
 
 try {
-await AlienAlfa.send5ButImg(from, menulist2,animestickermenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+await AlienAlfa.sendButtonImage(from, menulist2,animestickermenux+`\n\n${botname}`,unicorn, buttonxnxxr )
 }catch(err){
-    await AlienAlfa.send5ButImg(from, menulist2,animestickermenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+    await AlienAlfa.sendButtonImage(from, menulist2,animestickermenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
 }
  break
 
@@ -11633,12 +11660,12 @@ case 'nsfwmenu':
 	if (isBanChat) return reply(mess.banChat)
     var unicorn = await getBuffer(thumbz)
     //var unicorn = await getBuffer(picak+'Nsfw Menu')
-let nsfwmenux = FontTrigger(AlfaMenu.nsfwmenu)
+let nsfwmenux = AlfaMenu.nsfwmenu
 
 try {
-await AlienAlfa.send5ButImg(from, menulist2,nsfwmenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+await AlienAlfa.sendButtonImage(from, menulist2,nsfwmenux+`\n\n${botname}`,unicorn, buttonxnxxr )
 }catch(err){
-    await AlienAlfa.send5ButImg(from, menulist2,nsfwmenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+    await AlienAlfa.sendButtonImage(from, menulist2,nsfwmenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
 }
  break
 
@@ -11654,12 +11681,12 @@ case 'funmenu':
 	if (isBanChat) return reply(mess.banChat)
     var unicorn = await getBuffer(thumbz)
     //var unicorn = await getBuffer(picak+'Fun Menu')
-let funmenux = FontTrigger(AlfaMenu.funmenu)
+let funmenux = AlfaMenu.funmenu
 
 try {
-await AlienAlfa.send5ButImg(from, menulist2,funmenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+await AlienAlfa.sendButtonImage(from, menulist2,funmenux+`\n\n${botname}`,unicorn, buttonxnxxr )
 }catch(err){
-    await AlienAlfa.send5ButImg(from, menulist2,funmenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+    await AlienAlfa.sendButtonImage(from, menulist2,funmenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
 }
  break
 
@@ -11675,12 +11702,12 @@ case 'soundmenu':
 	if (isBanChat) return reply(mess.banChat)
     var unicorn = await getBuffer(thumbz)
     //var unicorn = await getBuffer(picak+'Sound Menu')
-let soundmenux = FontTrigger(AlfaMenu.soundmenu)
+let soundmenux = AlfaMenu.soundmenu
 
 try {
-await AlienAlfa.send5ButImg(from, menulist2,soundmenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+await AlienAlfa.sendButtonImage(from, menulist2,soundmenux+`\n\n${botname}`,unicorn, buttonxnxxr )
 }catch(err){
-    await AlienAlfa.send5ButImg(from, menulist2,soundmenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+    await AlienAlfa.sendButtonImage(from, menulist2,soundmenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
 }
  break
 
@@ -11696,12 +11723,12 @@ case 'gamemenu':
 	if (isBanChat) return reply(mess.banChat)
     var unicorn = await getBuffer(thumbz)
     //var unicorn = await getBuffer(picak+'Game Menu')
-let gamemenux = FontTrigger(AlfaMenu.gamemenu)
+let gamemenux = AlfaMenu.gamemenu
 
 try {
-await AlienAlfa.send5ButImg(from, menulist2,gamemenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+await AlienAlfa.sendButtonImage(from, menulist2,gamemenux+`\n\n${botname}`,unicorn, buttonxnxxr )
 }catch(err){
-    await AlienAlfa.send5ButImg(from, menulist2,gamemenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+    await AlienAlfa.sendButtonImage(from, menulist2,gamemenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
 }
  break
 
@@ -11717,12 +11744,12 @@ case 'anonymousmenu':
 	if (isBanChat) return reply(mess.banChat)
     var unicorn = await getBuffer(thumbz)
     //var unicorn = await getBuffer(picak+'Anonymous Menu')
-let anonymousmenux = FontTrigger(AlfaMenu.anonymousmenu)
+let anonymousmenux = AlfaMenu.anonymousmenu
 
 try {
-await AlienAlfa.send5ButImg(from, menulist2,anonymousmenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+await AlienAlfa.sendButtonImage(from, menulist2,anonymousmenux+`\n\n${botname}`,unicorn, buttonxnxxr )
 }catch(err){
-    await AlienAlfa.send5ButImg(from, menulist2,anonymousmenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+    await AlienAlfa.sendButtonImage(from, menulist2,anonymousmenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
 }
  break
 
@@ -11738,12 +11765,12 @@ case 'toolmenu':
 	if (isBanChat) return reply(mess.banChat)
     var unicorn = await getBuffer(thumbz)
     //var unicorn = await getBuffer(picak+'Tool Menu')
-let toolmenux = FontTrigger(AlfaMenu.toolmenu)
+let toolmenux = AlfaMenu.toolmenu
 
 try {
-await AlienAlfa.send5ButImg(from, menulist2,toolmenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+await AlienAlfa.sendButtonImage(from, menulist2,toolmenux+`\n\n${botname}`,unicorn, buttonxnxxr )
 }catch(err){
-    await AlienAlfa.send5ButImg(from, menulist2,toolmenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+    await AlienAlfa.sendButtonImage(from, menulist2,toolmenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
 }
  break
 
@@ -11759,12 +11786,12 @@ case 'databasemenu':
 	if (isBanChat) return reply(mess.banChat)
     var unicorn = await getBuffer(thumbz)
     //var unicorn = await getBuffer(picak+'Database Menu')
-let databasemenux = FontTrigger(AlfaMenu.databasemenu)
+let databasemenux = AlfaMenu.databasemenu
 
 try {
-await AlienAlfa.send5ButImg(from, menulist2,databasemenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+await AlienAlfa.sendButtonImage(from, menulist2,databasemenux+`\n\n${botname}`,unicorn, buttonxnxxr )
 }catch(err){
-    await AlienAlfa.send5ButImg(from, menulist2,databasemenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+    await AlienAlfa.sendButtonImage(from, menulist2,databasemenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
 }
  break
 
@@ -11780,12 +11807,12 @@ case 'indomenu':
 	if (isBanChat) return reply(mess.banChat)
     var unicorn = await getBuffer(thumbz)
     //var unicorn = await getBuffer(picak+'Indo Horoscope Menu')
-let indomenux = FontTrigger(AlfaMenu.indomenu)
+let indomenux = AlfaMenu.indomenu
 
 try {
-await AlienAlfa.send5ButImg(from, menulist2,indomenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+await AlienAlfa.sendButtonImage(from, menulist2,indomenux+`\n\n${botname}`,unicorn, buttonxnxxr )
 }catch(err){
-    await AlienAlfa.send5ButImg(from, menulist2,indomenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+    await AlienAlfa.sendButtonImage(from, menulist2,indomenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
 }
  break
 
@@ -11801,12 +11828,12 @@ case 'indohoroscopemenu':
 	if (isBanChat) return reply(mess.banChat)
     var unicorn = await getBuffer(thumbz)
     //var unicorn = await getBuffer(picak+'Indo Horoscope Menu')
-let indohormenux = FontTrigger(AlfaMenu.indohormenu)
+let indohormenux = AlfaMenu.indohormenu
 
 try {
-await AlienAlfa.send5ButImg(from, menulist2,indohormenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+await AlienAlfa.sendButtonImage(from, menulist2,indohormenux+`\n\n${botname}`,unicorn, buttonxnxxr )
 }catch(err){
-    await AlienAlfa.send5ButImg(from, menulist2,indohormenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+    await AlienAlfa.sendButtonImage(from, menulist2,indohormenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
 }
  break
 
@@ -11822,12 +11849,12 @@ case 'othermenu':
 	if (isBanChat) return reply(mess.banChat)
     var unicorn = await getBuffer(thumbz)
     //var unicorn = await getBuffer(picak+'Other Menu')
-let othermenux = FontTrigger(AlfaMenu.othermenu)
+let othermenux = AlfaMenu.othermenu
 
 try {
-await AlienAlfa.send5ButImg(from, menulist2,othermenux+`\n\n${botname}`,unicorn, buttonxnxxr )
+await AlienAlfa.sendButtonImage(from, menulist2,othermenux+`\n\n${botname}`,unicorn, buttonxnxxr )
 }catch(err){
-    await AlienAlfa.send5ButImg(from, menulist2,othermenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
+    await AlienAlfa.sendButtonImage(from, menulist2,othermenux+'𝘛𝘩𝘦 𝘮𝘦𝘯𝘶 𝘉𝘶𝘵𝘵𝘰𝘯 𝘠𝘰𝘶 𝘗𝘳𝘰𝘷𝘪𝘥𝘦𝘥 𝘪𝘯 𝘏𝘌𝘙𝘖𝘒𝘜 𝘤𝘰𝘯𝘧𝘪𝘨 𝘷𝘢𝘳𝘴 𝘤𝘰𝘯𝘵𝘢𝘪𝘯𝘴 𝘚𝘰𝘮𝘦 𝘌𝘳𝘳𝘰𝘳 (𝘛𝘩𝘪𝘴 𝘐𝘴 𝘛𝘩𝘦 𝘋𝘦𝘧𝘢𝘶𝘭𝘵 𝘉𝘶𝘵𝘵𝘰𝘯𝘴 𝘉𝘺 𝘈𝘓𝘐𝘌𝘕-𝘈𝘓𝘍𝘈)\n\n'+`${botname}`,unicorn, buttonxnxxr )
 }
  break
 
@@ -11908,7 +11935,7 @@ break
                                             °◦¸¸.◦°˚°◦☙°◦¸¸.◦°˚°◦☙ミミ◦❧◦°˚°◦.¸¸◦°´❤*•.
    
 
-                                            ██████╗░██╗░░░██╗██████╗░██╗░░░░░██╗░█████╗░
+                                            ██████╗░█f█╗░░░██╗██████╗░██╗░░░░░██╗░█████╗░
                                             ██╔══██╗██║░░░██║██╔══██╗██║░░░░░██║██╔══██╗
                                             ██████╔╝██║░░░██║██████╦╝██║░░░░░██║██║░░╚═╝
                                             ██╔═══╝░██║░░░██║██╔══██╗██║░░░░░██║██║░░██╗

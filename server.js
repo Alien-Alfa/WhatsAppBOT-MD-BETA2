@@ -43,5 +43,6 @@ function start(file) {
 
 }
 
-
+try{
 start('index.js')
+}catch(err){ process.send('reset') }
