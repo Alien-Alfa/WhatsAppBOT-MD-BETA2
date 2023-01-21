@@ -10936,7 +10936,7 @@ replay('Choose on or off')
                 neww = performance.now()
                 oldd = performance.now()
                 respon = `
-Response Speed ${latensi.toFixed(4)} _Second_ \n ${oldd - neww} _miliseconds_\n\nRuntime : ${runtime(process.uptime())}`
+Response Speed ${latensi.toFixed(1)}Sec / ${(oldd - neww).toFixed(1)}ms\n\nRuntime : ${runtime(process.uptime())}`
 
 let resp2 = `💻 Info Server
 RAM: ${formatp(os.totalmem() - os.freemem())} / ${formatp(os.totalmem())}
